@@ -3,7 +3,7 @@ layout: archive
 permalink: /machine-learning/
 title: "Machine Learning posts by Tags"
 header:
-  image: "/images/zakim.jpg"
+  overlay_image: "/images/zakim.jpg"
 ---
 
 {% include base_path %}
