@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name             : "Ganesh Santhanam"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/images/bio-pic.jpg"
   bio              : "Machine Learning Portfolio"
   location         : "Chennai, India"
   email            :
