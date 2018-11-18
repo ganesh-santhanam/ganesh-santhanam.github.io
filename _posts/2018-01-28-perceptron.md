@@ -54,8 +54,9 @@ Here's an image:
 <img src="{{ site.url }}{{ site.baseurl }}/images/perceptron/linsep.jpg" alt="linearly separable data">
 
 Here's another image using Kramdown:
+{:.center}
 ![alt]({{ site.url }}{{ site.baseurl }}/images/perceptron/linsep.jpg)
-
+This is an image
 Here's some math:
 
 $$z=x+y$$
@@ -64,4 +65,8 @@ You can also put it inline $$z=x+y$$
 
 $$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
 
+
+
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+<center> *Fig. 2: The minimum dominating set of a graph*</center>
