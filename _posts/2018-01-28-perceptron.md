@@ -61,3 +61,5 @@ Here's some math:
 $$z=x+y$$
 
 You can also put it inline $$z=x+y$$
+
+$$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
