@@ -69,4 +69,17 @@ $$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ {
 
 ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
-<center> *Fig. 2: The minimum dominating set of a graph*</center>
+<center>
+
+*Fig. 2: The minimum dominating set of a graph*
+</center>
+
+<p align="center">
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
+</p>
+<center>
+
+*Fig. 2: The minimum dominating set of a graph*
+</center>
+
+<img src="{{ site.url }}{{ site.baseurl }}https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" alt="linearly separable data">
