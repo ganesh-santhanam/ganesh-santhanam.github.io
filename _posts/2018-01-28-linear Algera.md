@@ -84,11 +84,11 @@ For all $A \in \mathbb { R } ^ { m \times n }$ ;
 The transpose of a matrix results from “flipping” the rows and columns.
 $$ \left( A ^ { T } \right) _ { i j } = A _ { j i }$$
 Transposes have the following properties
-1. $\left( A ^ { T } \right) ^ { T } = A$
-2. $( A B ) ^ { T } = B ^ { T } A ^ { T }$
-3. $( A + B ) ^ { T } = A ^ { T } + B ^ { T }$
+1. \(\left( A ^ { T } \right) ^ { T } = A\)
+2. \(( A B ) ^ { T } = B ^ { T } A ^ { T }\)
+3. \(( A + B ) ^ { T } = A ^ { T } + B ^ { T }\)
 
-A square matrix $A \in \mathbb { R } ^ { n \times n }$ is symmetric if $A = A ^ { T }$
+A square matrix \(A \in \mathbb { R } ^ { n \times n }\) is symmetric if \(A = A ^ { T }\)
 
 The trace of a square matrix $A \in \mathbb { R } ^ { n \times n }$ denoted tr(A) is the sum of diagonal elements in the matrix:
 $$ \operatorname { tr } A = \sum _ { i = 1 } ^ { n } A _ { i i } $$
