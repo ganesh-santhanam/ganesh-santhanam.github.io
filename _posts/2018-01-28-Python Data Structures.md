@@ -751,3 +751,12 @@ class RedBlackTreeMap(TreeMap):
 
 
 From Goodrich and Tamassia book
+
+<p align="center">
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/c14cb1f.JPG"">
+
+</p>
+
+<center>
+ Comparison of common data structures
+</center>
