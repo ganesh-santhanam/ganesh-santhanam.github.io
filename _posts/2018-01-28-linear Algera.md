@@ -42,20 +42,20 @@ $$A x = b $$
 
 $$ A = \left[ \begin{array} { c c } { 4 } & { - 5 } \\ { - 2 } & { 3 } \end{array} \right] , \quad b = \left[ \begin{array} { c } { - 13 } \\ { 9 } \end{array} \right] $$
 
-By  $A \in \mathbb { R } ^ { m \times n }$ we denote a matrix with m rows and n columns, where the entries of A are real numbers.
+By  \((A \in \mathbb { R } ^ { m \times n }\)\) we denote a matrix with m rows and n columns, where the entries of A are real numbers.
 
-By $x \in \mathbb { R } ^ { n }$, we denote a vector with n entries. By convention, an n-dimensional vector is often thought of as a matrix with n rows and 1 column, known as a **column vector**.
+By \(x \in \mathbb { R } ^ { n }\), we denote a vector with n entries. By convention, an n-dimensional vector is often thought of as a matrix with n rows and 1 column, known as a **column vector**.
 
-The ith element of a vector x is denoted $x _ { i }$
+The ith element of a vector x is denoted \(x _ { i }\)
 $$ x = \left[ \begin{array} { c } { x _ { 1 } } \\ { x _ { 2 } } \\ { \vdots } \\ { x _ { n } } \end{array} \right] $$
 
-We use the notation $a _ { i j } \left( \text { or } A _ { i j } , A _ { i , j } , \text { etc } \right)$ to denote the entry of A in the ith row and
+We use the notation \(a _ { i j } \left( \text { or } A _ { i j } , A _ { i , j } , \text { etc } \right)\) to denote the entry of A in the ith row and
 jth column:
 
 $$ A = \left[ \begin{array} { c c c c } { a _ { 11 } } & { a _ { 12 } } & { \cdots } & { a _ { 1 n } } \\ { a _ { 21 } } & { a _ { 22 } } & { \cdots } & { a _ { 2 n } } \\ { \vdots } & { \vdots } & { \ddots } & { \vdots } \\ { a _ { m 1 } } & { a _ { m 2 } } & { \cdots } & { a _ { m n } } \end{array} \right] $$
 
-The product of two matrices $A \in \mathbb { R } ^ { m \times n } \text { and } B \in \mathbb { R } ^ { n \times p }$ is the matrix
-where $C _ { i j } = \sum _ { k = 1 } ^ { n } A _ { i k } B _ { k j }$
+The product of two matrices \(A \in \mathbb { R } ^ { m \times n } \text { and } B \in \mathbb { R } ^ { n \times p }\) is the matrix
+where \(C _ { i j } = \sum _ { k = 1 } ^ { n } A _ { i k } B _ { k j }\)
 
 in order for the matrix product to exist, the number of columns in A must equal the number of rows in B.
 
@@ -65,7 +65,7 @@ inner product or dot product of the vectors, is a real number given by
 
 $$ x ^ { T } y \in \mathbb { R } = \left[ \begin{array} { c c c c } { x _ { 1 } } & { x _ { 2 } } & { \cdots } & { x _ { n } } \end{array} \right] \left[ \begin{array} { c } { y _ { 1 } } \\ { y _ { 2 } } \\ { \vdots } \\ { y _ { n } } \end{array} \right] = \sum _ { i = 1 } ^ { n } x _ { i } y _ { i } $$
 
-Also $x ^ { T } y = y ^ { T } x$
+Also \(x ^ { T } y = y ^ { T } x\)
 
 The Outer product of vectors is given by
 $$ \left( x y ^ { T } \right) _ { i j } = x _ { i } y _ { j } $$
@@ -74,12 +74,12 @@ In addition to this, it is useful to know a few basic properties of matrix multi
 
 * Matrix multiplication is associative: (AB)C = A(BC)
 * Matrix multiplication is distributive: A(B + C) = AB + AC
-* Matrix multiplication is, in general, not commutative; that is, it can be the case that $A B \neq B A$
+* Matrix multiplication is, in general, not commutative; that is, it can be the case that \(A B \neq B A\)
 
 
-The identity matrix, denoted $I \in \mathbb { R } ^ { n \times n }$, is a square matrix with ones on the diagonal and zeros everywhere else.
+The identity matrix, denoted \(I \in \mathbb { R } ^ { n \times n }\), is a square matrix with ones on the diagonal and zeros everywhere else.
 
-For all $A \in \mathbb { R } ^ { m \times n }$ ;
+For all \(A \in \mathbb { R } ^ { m \times n }\) ;
 
 The transpose of a matrix results from “flipping” the rows and columns.
 $$ \left( A ^ { T } \right) _ { i j } = A _ { j i }$$
@@ -90,23 +90,23 @@ Transposes have the following properties
 
 A square matrix \(A \in \mathbb { R } ^ { n \times n }\) is symmetric if \(A = A ^ { T }\)
 
-The trace of a square matrix $A \in \mathbb { R } ^ { n \times n }$ denoted tr(A) is the sum of diagonal elements in the matrix:
+The trace of a square matrix \(A \in \mathbb { R } ^ { n \times n }\) denoted tr(A) is the sum of diagonal elements in the matrix:
 $$ \operatorname { tr } A = \sum _ { i = 1 } ^ { n } A _ { i i } $$
 
 Trace has the following properties
-1. $\operatorname { tr } A = \operatorname { tr } A ^ { T }$
-2. $\operatorname { tr } ( A + B ) = \operatorname { tr } A + \operatorname { tr } B$
-3. $\operatorname { tr } A B = \operatorname { tr } B A$
-4. $\operatorname { tr } ( t A ) = t \operatorname { tr } A$
+1. \(\operatorname { tr } A = \operatorname { tr } A ^ { T }\)
+2. \(\operatorname { tr } ( A + B ) = \operatorname { tr } A + \operatorname { tr } B\)
+3. \(\operatorname { tr } A B = \operatorname { tr } B A\)
+4. \(\operatorname { tr } ( t A ) = t \operatorname { tr } A\)
 
 # Norms of Vector
 
-A norm of a vector $\| x \|$ is the length of the vectors
+A norm of a vector \(\| x \|\) is the length of the vectors
 
-The euclidean or the $\ell _ { 2 }$ norm is
+The euclidean or the \(\ell _ { 2 }\) norm is
 $$\| x \| _ { 2 } = \sqrt { \sum _ { i = 1 } ^ { n } x _ { i } ^ { 2 } }$$
 
-where $\| x \| _ { 2 } ^ { 2 } = x ^ { T } x$
+where \(\| x \| _ { 2 } ^ { 2 } = x ^ { T } x\)
 
 In General the norm for a real number p ≥ 1 is
 $$ \| x \| _ { p } = \left( \sum _ { i = 1 } ^ { n } \left| x _ { i } \right| ^ { p } \right) ^ { 1 / p }$$
@@ -119,10 +119,10 @@ A set of vectors is said to be (linearly) independent if no vector can
 be represented as a linear combination of the remaining vectors.
 The column rank of a matrix is the size of the largest subset of columns of that constitute a linearly independent set.
 
-For $A \in \mathbb { R } ^ { m \times n }$
+For \(A \in \mathbb { R } ^ { m \times n }\)
 $$ \operatorname { rank } ( A ) \leq \min ( m , n )$$
-* If $\operatorname { rank } ( A ) = \min ( m , n )$ then A is said to be full Rank
-* $\operatorname { rank } ( A ) = \operatorname { rank } \left( A ^ { T } \right)$
+* If \(\operatorname { rank } ( A ) = \min ( m , n )\) then A is said to be full Rank
+* \(\operatorname { rank } ( A ) = \operatorname { rank } \left( A ^ { T } \right)\)
 
 
 #The Inverse of Matrix
@@ -133,12 +133,12 @@ $$A ^ { - 1 } A = I = A A ^ { - 1 }$$
 If a matrix does not have an inverse it is said to be non-invertible or singular.In order for a square matrix A to have an inverse , then A must be full rank.
 
 Following are the properties of inverse
-* $\left( A ^ { - 1 } \right) ^ { - 1 } = A$
-* $( A B ) ^ { - 1 } = B ^ { - 1 } A ^ { - 1 }$
-* $\left( A ^ { - 1 } \right) ^ { T } = \left( A ^ { T } \right) ^ { - 1 }$
+* \(\left( A ^ { - 1 } \right) ^ { - 1 } = A\)
+* \(( A B ) ^ { - 1 } = B ^ { - 1 } A ^ { - 1 }\)
+* \(\left( A ^ { - 1 } \right) ^ { T } = \left( A ^ { T } \right) ^ { - 1 }\)
 
 #Orthogonal Matrices
-Two vectors x, y are orthogonal if $x ^ { T } y = 0$ . A vector x i normalized if $\| x \| _ { 2 } = 1$
+Two vectors x, y are orthogonal if \(x ^ { T } y = 0\) . A vector x i normalized if \(\| x \| _ { 2 } = 1\)
 
 A square matrix U is orthogonal if all its columns are orthogonal to each other and are
 normalized (the columns are then referred to as being orthonormal ).
@@ -170,21 +170,21 @@ Example for  a 2x2 matrix:
 $$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$
 
 Properties of determinants are as follows:
-* $| A | = \left| A ^ { T } \right|$
-* $| A B | = | A | | B |$
-* $| A | = 0$ if and only if A is singular
-* For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
+* \(| A | = \left| A ^ { T } \right|\)
+* \(| A B | = | A | | B |\)
+* \(| A | = 0\) if and only if A is singular
+* For non singular matrix \(\left| A ^ { - 1 } \right| = 1 / | A |\)
 
 #Eigenvalues and Eigenvectors
 
-Given a square matrix $A \in \mathbb { R } ^ { n \times n }$ ; $\lambda \in \mathbb { C }$ is an eigenvalue of A and $x \in \mathbb { C } ^ { n }$ is the eigenvector if
+Given a square matrix \(A \in \mathbb { R } ^ { n \times n }\) ; \(\lambda \in \mathbb { C }\( is an eigenvalue of A and \)x \in \mathbb { C } ^ { n }\( is the eigenvector if
 
 $$A x = \lambda x , \quad x \neq 0$$
 
 Properties of Eigen value and Eigen Vectors:
-1. $| ( \lambda I - A ) | = 0$
-2. $\operatorname { tr } A = \sum _ { i = 1 } ^ { n } \lambda _ { i }$
-3. $| A | = \prod _ { i = 1 } ^ { n } \lambda _ { i }$
+1. \(| ( \lambda I - A ) | = 0\)
+2. \(\operatorname { tr } A = \sum _ { i = 1 } ^ { n } \lambda _ { i }\)
+3. \(| A | = \prod _ { i = 1 } ^ { n } \lambda _ { i }\)
 4. The rank of A is equal to the number of non-zero eigenvalues of A.
 
 We can write all the eigenvector equations simultaneously as
