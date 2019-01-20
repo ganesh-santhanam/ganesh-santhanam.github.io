@@ -262,12 +262,71 @@ The fully connected layer (FC) operates on a flattened input where each input is
 <img src="https://stanford.edu/~shervine/images/fully-connected.png">
 
 </p>
-center>
+<center>
 Pool Layer ( Credit shervine Amidi)
 </center>
 
 
-#
+#Recurrent Neural Networks
+Recurrent neural networks or RNNs (Rumelhart et al., 1986a) are a family of
+neural networks for processing sequential data. RNNs can scale to much
+longer sequences  as well as process sequences of variable length. Parameter sharing makes it possible to extend and apply the model to examples of different forms (different lengths, here) and generalize across them. A related idea is the use of convolution across a 1-D temporal sequence.
+
+There are many types of RNN which are listed below
+<p align="center">
+<img src="https://imgur.com/HOgAo7R.jpg">
+
+</p>
+<center>
+Pool Layer ( Credit shervine Amidi)
+</center>
+
+The most effective sequence models used in practical applications
+are called gated RNNs. These include the long short-term memory and
+networks based on the gated recurrent unit. Plain RNNs have the issue of vanishing gradient and exploding gradient which makes it difficult to capture long term dependencies. Hence gated RNNs with gradient clipping is used in practice.
+
+##Long Short-Term Memory units (LSTM)
+Is a vanilla RNN the output per step is as follows.
+$$h _ { t } = \tanh \left( W \left( \begin{array} { c } { h _ { t - 1 } } \\ { x _ { t } } \end{array} \right) \right)$$
+
+To deal with the vanishing gradient problem instead of one output LSTM outputs 2 vectors at every step $C _ { t } , h _ { t }$ which is defined as follows
+
+$$\begin{aligned} c _ { t } & = f \odot c _ { t - 1 } + i \odot g \\ h _ { t } & = o \odot \tanh \left( c _ { t } \right) \end{aligned}$$
+
+Where C is the cell state and H is the output of that step
+
+$\odot$ indicates the Hadamard product(element-wise product).
+
+I is the input gate , F is the forget gate and O is the output gate.  We operate on the cell state C using the I,F,O,G gates and update the C value to Zero(to reset it) or some other value as required
+
+$$\left( \begin{array} { l } { i } \\ { f } \\ { o } \\ { g } \end{array} \right) = \left( \begin{array} { c } { \sigma } \\ { \sigma } \\ { \sigma } \\ { \tanh } \end{array} \right) W \left( \begin{array} { c } { h _ { t - 1 } } \\ { x _ { t } } \end{array} \right)$$
+
+<p align="center">
+<img src="https://imgur.com/Iyztx6l.jpg">
+
+</p>
+<center>
+LSTM ( Credit CS231N)
+</center>
+
+Gated Recurrent Unit (GRU)
+
+GRU is similar to LSTM but has lesser gates but provide similar performance to LSTM
+$$\begin{array} { l } { z _ { t } = \sigma _ { g } \left( W _ { z } x _ { t } + U _ { z } h _ { t - 1 } + b _ { z } \right) } \\ { r _ { t } = \sigma _ { g } \left( W _ { r } x _ { t } + U _ { r } h _ { t - 1 } + b _ { r } \right) } \\ { h _ { t } = \left( 1 - z _ { t } \right) \circ h _ { t - 1 } + z _ { t } \circ \sigma _ { h } \left( W _ { h } x _ { t } + U _ { h } \left( r _ { t } \circ h _ { t - 1 } \right) + b _ { h } \right) } \end{array}$$
+
+Where x is the input ,h is the output , z is the update gate , r is the reset gate.
+
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Gated_Recurrent_Unit%2C_base_type.svg">
+
+</p>
+<center>
+GRU ( Credit Wikipedia)
+</center>
+
+
+
+
 
 
 
