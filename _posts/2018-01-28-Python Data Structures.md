@@ -32,6 +32,40 @@ Here's a numbered list:
 2. Second
 3. Third
 
+#Number Representation in Computer
+
+Computers operate using Boolean numbers(base 2) while humans use numbers with base 10. To store base 10 numbers computers need to encode it in Boolean form. This is commonly done using Int or float format.
+
+The 32-bit int data type can hold integer values in the range of −2,147,483,648 to 2,147,483,647 [$- \left( 2 ^ { 31 } \right) \text { to } 2 ^ { 31 } - 1$] and 64 bit is in the range  $- \left( 2 ^ { 63 } \right) \text { to } 2 ^ { 63 } - 1$
+<p align="center">
+<img src="https://www.dummies.com/wp-content/uploads/181664.image0.jpg">
+
+</p>
+
+<center>
+ 32 bit Int
+</center>
+
+To store larger numbers we use float which is a  formulaic representation of real numbers as an approximation so as to support a trade-off between range and precision.
+
+Single precision float with width of 32 bits can support range of ±1.18×10−38 to ±3.4×1038 with precision of approximately 7 decimal digits while double precision 64 bits can support range of  ±2.23×10−308 to ±1.80×10308 with precision of approximately 16 decimal digits
+
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/IEEE_754_Single_Floating_Point_Format.svg">
+
+</p>
+
+<center>
+ Single precision float
+</center>
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/IEEE_754_Double_Floating_Point_Format.svg">
+
+</p>
+
+<center>
+Double precision float
+</center>
 
 
 # Big O Notation

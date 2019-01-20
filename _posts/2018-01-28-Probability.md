@@ -186,14 +186,29 @@ $$\hat { \theta } _ { \mathrm { MAP } } = \underset { 0 } { \arg \max } \left( \
 
 
 
+# Information Theory  
+
+We can quantify the amount of uncertainty in an entire probability distribution using the Shannon entropy of an event X = x
+
+$$ H ( \mathrm { x } ) = \mathbb { E } _ { \mathrm { x } \sim P } [ I ( x ) ] = - \mathbb { E } _ { \mathrm { x } \sim P } [ \log P ( x ) ] $$
 
 
+If we have two separate probability distributions P (x) and Q (x) over the same
+random variable x, we can measure how different these two distributions are using
+the Kullback-Leibler (KL) divergence:
 
+$$ D _ { \mathrm { KL } } ( P \| Q ) = \mathbb { E } _ { \mathrm { x } \sim P } \left[ \log \frac { P ( x ) } { Q ( x ) } \right] = \mathbb { E } _ { \mathrm { x } \sim P } [ \log P ( x ) - \log Q ( x ) ] $$
 
+The KL divergence has many useful properties, most notably that it is nonnegative.
+The KL divergence is 0 if and only if P and Q are the same distribution in
+the case of discrete variables, or equal “almost everywhere” in the case of continuous variables
 
+A quantity that is closely related to the KL divergence is the cross-entropy
 
+$$ H ( P , Q ) = - \mathbb { E } _ { \mathrm { x } \sim P } \log Q ( x )$$
 
-
+Minimizing the cross-entropy with respect to Q is equivalent to minimizing the
+KL divergence,
 
 Python code block:
 ```python
