@@ -170,10 +170,10 @@ Example for  a 2x2 matrix:
 $$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$
 
 Properties of determinants are as follows:
-* $| A | = \left| A ^ { T } \right|$
-* $| A B | = | A | | B |$
-* $| A | = 0$ if and only if A is singular
-* For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
+- $| A | = \left| A ^ { T } \right|$
+- $| A B | = | A | | B |$
+- $| A | = 0$ if and only if A is singular
+- For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
 
 #Eigenvalues and Eigenvectors
 
@@ -182,9 +182,9 @@ Given a square matrix $A \in \mathbb { R } ^ { n \times n }$ ; $\lambda \in \mat
 $$A x = \lambda x , \quad x \neq 0$$
 
 Properties of Eigen value and Eigen Vectors:
-1. $| ( \lambda I - A ) | = 0$
-2. $\operatorname { tr } A = \sum _ { i = 1 } ^ { n } \lambda _ { i }$
-3. $| A | = \prod _ { i = 1 } ^ { n } \lambda _ { i }$
+1. $$| ( \lambda I - A ) | = 0$$
+2. $$\operatorname { tr } A = \sum _ { i = 1 } ^ { n } \lambda _ { i }$$
+3. $$| A | = \prod _ { i = 1 } ^ { n } \lambda _ { i }$$
 4. The rank of A is equal to the number of non-zero eigenvalues of A.
 
 We can write all the eigenvector equations simultaneously as
