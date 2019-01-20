@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Project: Perceptron"
+title: "Classic Machine Learning"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -50,34 +50,22 @@ head(df)
 
 Here's some inline code `x+y`.
 
-Here's an image:
-<img src="{{ site.url }}{{ site.baseurl }}/images/perceptron/linsep.jpg" alt="linearly separable data">
-
-Here's another image using Kramdown:
-{:.center}
-![alt]({{ site.url }}{{ site.baseurl }}/images/perceptron/linsep.jpg)
-This is an image
 Here's some math:
 
 $$z=x+y$$
 
-You can also put it inline $$z=x+y$$
+Latex Math
 
 $$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
 
 
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-
-<center>
-
-*Fig. 2: The minimum dominating set of a graph*
-</center>
 
 <p align="center">
 <img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
-</p>
-<center>
 
+</p>
+
+<center>
 *Fig. 2: The minimum dominating set of a graph*
 </center>

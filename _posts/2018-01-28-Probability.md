@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning Project: Perceptron"
+title: "Probability"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
