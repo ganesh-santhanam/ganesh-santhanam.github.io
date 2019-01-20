@@ -167,13 +167,13 @@ $$ | A | = \sum _ { i = 1 } ^ { n } ( - 1 ) ^ { i + j } a _ { i j } \left| A _ {
 
 Example for  a 2x2 matrix:
 
-$$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$
-
+$$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$  
+  
 Properties of determinants are as follows:
-- $| A | = \left| A ^ { T } \right|$
-- $| A B | = | A | | B |$
-- $| A | = 0$ if and only if A is singular
-- For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
+-   $| A | = \left| A ^ { T } \right|$
+-   $| A B | = | A | | B |$
+-   $| A | = 0$ if and only if A is singular
+-   For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
 
 #Eigenvalues and Eigenvectors
 
