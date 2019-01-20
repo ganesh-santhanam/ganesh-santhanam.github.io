@@ -161,7 +161,7 @@ Multivariate Gaussian distribution
 $$f _ { X _ { 1 } , X _ { 2 } , \ldots , X _ { n } } \left( x _ { 1 } , x _ { 2 } , \ldots , x _ { n } ; \mu , \Sigma \right) = \frac { 1 } { ( 2 \pi ) ^ { n / 2 } | \Sigma | ^ { 1 / 2 } } \exp \left( - \frac { 1 } { 2 } ( x - \mu ) ^ { T } \Sigma ^ { - 1 } ( x - \mu ) \right)$$
 
 
-Maximum likelihood estimation(MLE)
+#Maximum likelihood estimation(MLE)
 
 MLE is to choose parameters that “explain” the data best by maximizing the probability/density of the data we’ve seen as a function of the parameters.
 
@@ -172,7 +172,24 @@ $$\mathcal { L } ( \theta ) = p \left( x _ { 1 } , \ldots , x _ { n } ; \theta \
 It is usually convenient to take logs, giving rise to the log-likelihood.
 $$\log \mathcal { L } ( \theta ) = \sum _ { i = 1 } ^ { n } \log p \left( x _ { i } ; \theta \right)$$
 
-Maximum a posteriori estimation(MAP)
+Let us derive a simple example for a coin toss model where m = no of successes and N = Number of coin flips
+
+For a Bernoulli distribution
+ $$p \left( x _ { i } | \theta \right) = \theta ^ m ( 1 - \theta ) ^ {n-m }$$
+ $$p \left( x _ { i } | \theta \right) =\prod _ { i = 1 } ^ { n } \left( \theta ^ m \right) ( 1 - \theta ) ^ { n-m }$$
+
+ Log likelihood is
+ $$\ell ( \theta )= \log P \left( x _ { 1 } : { n } | \theta \right) = m \log \theta + ( n - m ) \log ( 1 - \theta )$$
+
+Differentiate and Equate to Zero to find $\theta$
+$$\frac { d \ell (\theta )  } { d \theta } = \frac { d } { d  \theta  } ( m \log \theta + ( n - m ) \log ( 1 - \theta ) )$$
+$$= \frac { m } { \theta } + ( n - m ) ( - 1 ) \frac { 1 } { 1 - \theta }$$
+$$= \frac { ( 1 - \theta ) m + ( n - n ) \theta } { \theta ( 1 - \theta ) } = 0$$
+$$m - \theta m + \theta m - \theta n = 0$$
+$$\theta = m / n$$
+
+
+#Maximum a posteriori estimation(MAP)
 
 We  assume  that  the  parameters  are  a  random  variable,  and  we  specify  a  prior distribution p(θ).
 
@@ -184,7 +201,20 @@ $$ \hat { \theta } _ { \mathrm { MAP } } = \underset { \theta } { \arg \max } p 
 If the observations are iid (independent and identically distributed) then
 $$\hat { \theta } _ { \mathrm { MAP } } = \underset { 0 } { \arg \max } \left( \log p ( \theta ) + \sum _ { i = 1 } ^ { n } \log p \left( x _ { i } | \theta \right) \right)$$
 
+## Example MAP for Bernoulli Coin Toss
+The likelihood is as follows given that there are m successes and n trials
 
+$$p \left( x _ { 1 : n } | \theta \right) = \theta ^ { m } ( 1 - \theta ) ^ { n - m }$$
+
+We need to specify prior. For Bernoulli distribution we use Beta distribution which is the conjugate prior.
+
+$$P(\theta)=\frac { \Gamma( \alpha + \beta ) } { \Gamma( \alpha ) \Gamma ( \beta ) }\theta ^ { \alpha - 1 } ( 1 - \theta ) ^ { \beta - 1 }$$
+
+Now we can compute the posterior
+$$p ( \theta | x _ { 1 : n } ) \propto p \left( x _ { 1 : n } | \theta \right) p ( \theta )$$
+$$= \theta ^ { m } ( 1 - \theta ) ^ { n - m } \theta ^ { \alpha - 1 } ( 1 - \theta ) ^ { \beta - 1 }$$
+$$= \theta ^ { m + \alpha - 1 } ( 1 - \theta ) ^ { n - m + \beta - 1 }$$
+$$p ( \theta | x _ { 1 : n } ) =\frac { \Gamma \left( \alpha ^ { \prime } + b ^ { \prime } \right) } { \Gamma \left( \alpha ^ { \prime } \right) \Gamma \left( \beta ^ { \prime } \right) }\theta ^ { \alpha ^ { \prime } - 1 } ( 1 - \theta ) ^ { \beta^\prime - 1 }$$
 
 # Information Theory  
 
@@ -210,40 +240,96 @@ $$ H ( P , Q ) = - \mathbb { E } _ { \mathrm { x } \sim P } \log Q ( x )$$
 Minimizing the cross-entropy with respect to Q is equivalent to minimizing the
 KL divergence,
 
-Python code block:
-```python
-    import numpy as np
+Example for a Bernoulli Variable x the entropy is
 
-    def test_function(x, y):
-      z = np.sum(x,y)
-      return z
-```
-
-R code block:
-```r
-library(tidyverse)
-df <- read_csv("some_file.csv")
-head(df)
-```
-
-Here's some inline code `x+y`.
-
-Here's some math:
-
-$$z=x+y$$
-
-Latex Math
-
-$$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
+$$ H = - \sum _ { x _ { \mathfrak { z } } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right]$$
+$$= - \theta \log \theta - ( 1 - \theta ) \log ( 1 - \theta )$$
 
 
+#Gaussian Process(GP)
+it is referred to as the infinite-dimensional extension of the multivariate normal distribution
+$$X = \left[ \begin{array} { c } { X _ { 1 } } \\ { X _ { 2 } } \\ { \vdots } \\ { X _ { n } } \end{array} \right] \sim \mathcal { N } ( \mu , \Sigma )$$
 
+A GP is specified by a mean function m(x) and a covariance function , otherwise known as a kernel. The shape and smoothness of our function is determined by the covariance function, as it controls the correlation between all pairs of output values.
+
+For Each partition XX  and YY  only depends on its corresponding entries in $\mu$  and $\Sigma$ .
+$$\left[ \begin{array} { c } { X } \\ { Y } \end{array} \right] \sim \mathcal { N } ( \mu , \Sigma ) = \mathcal { N } \left( \left[ \begin{array} { c } { \mu _ { X } } \\ { \mu _ { Y } } \end{array} \right] , \left[ \begin{array} { c } { \Sigma _ { X X } \Sigma _ { X Y } } \\ { \Sigma _ { Y X } \Sigma _ { Y Y } } \end{array} \right] \right)$$
+
+We can determine their marginalized probability distributions in the following way:
+$$\begin{aligned} X & \sim \mathcal { N } \left( \mu _ { X } , \Sigma _ { X X } \right) \\ Y & \sim \mathcal { N } \left( \mu _ { Y } , \Sigma _ { Y Y } \right) \end{aligned}$$
+
+Given a mean function and a kernel, we can sample from any GP.
+
+For example, consider single-dimensional inputs $x _ { n }$ with a constant mean function at 0 and the following kernel:
+
+$$k \left( x , x ^ { \prime } \right) = h ^ { 2 } \left( 1 + \frac { \left( x - x ^ { \prime } \right) ^ { 2 } } { 2 \alpha l ^ { 2 } } \right) ^ { - \alpha }$$
+where k,α, and l are all positive real numbers, referred to as hyper-parameters.
+
+Below are samples drawn from a GP with a rational quadratic kernel and various kernel parameters, with h fixed at 1:
 
 <p align="center">
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
+<img src="http://keyonvafa.com/assets/images/gp_predictit_blog/gp_samples.png">
 
 </p>
 
 <center>
-*Fig. 2: The minimum dominating set of a graph*
+Samples from GP
 </center>
+
+Typically, we would like to estimate function values of a GP conditioned on some training data,
+<p align="center">
+<img src="https://imgur.com/GBThrQh.jpg">
+
+</p>
+
+<center>
+Original GP Prior and the conditioned GP on data
+</center>
+
+The GP can help estimate the uncertainty as well do non linear regression and prediction.
+
+
+# Inference using Monte Carlo Methods
+The normalizing constant of Bayes rule is often intractable. Hence we need to use sampling methods to approximate the posterior. These are called monte carlo methods.
+
+#Sampling from standard distribution
+
+The simplest method for sampling from a univariate distribution is based on the inverse probability transform. Let F be a cumulative distribution function (cdf) of some distribution we want to sample from, and let $F ^ { - 1 }$ be its inverse.
+
+Then If $U \sim U ( 0,1 )$ is a uniform random variable then $F ^ { - 1 } ( U ) \sim F$
+
+<p align="center">
+<img src="https://imgur.com/I77j4lu.jpg">
+
+</p>
+
+<center>
+Sampling from inverse CDF
+</center>
+
+#Markov Chain Monte Carlo
+
+Rather than directly sampling from the function we construct a markov chain and sample from it to approximate the posterior
+
+##Metropolis Hastings algorithm
+
+The basic idea in MH is that at each step, we propose to move from the current state x to a new state x′ with probability q(x′|x), where q is called the proposal distribution(also called the kernel).  Having proposed a move to x′, we then decide whether to accept this proposal or not . If the proposal is accepted, the new state is x′, otherwise the new state is the same as the current state x.
+$$r = \min \left( 1 , \frac { p ^ { * } \left( \mathrm { x } ^ { \prime } \right) } { p ^ { * } ( \mathrm { x } ) } \right)$$
+
+Gibbs sampling, is a special case of MH
+$$q \left( \mathbf { x } ^ { \prime } | \mathbf { x } \right) = p \left( x _ { i } ^ { \prime } | \mathbf { x } _ { - i } \right) \mathbb { I } \left( \mathbf { x } _ { - i } ^ { \prime } = \mathbf { x } _ { - i } \right)$$
+
+We move to a new state where $x _ { i }$ is sampled from its full conditional, but $\mathbf { x } _ { - i }$ left unchanged with acceptance rate of 1 for each such proposal.
+
+
+
+<p align="center">
+<img src="https://imgur.com/DK2txGF.jpg">
+
+</p>
+
+<center>
+Source:Nando De Freitas
+</center>
+
+We start MCMC from an arbitrary initial state. Samples collected before the chain has reached its stationary distribution do not come from p∗, and are usually thrown away. This is called the burn-in phase.
