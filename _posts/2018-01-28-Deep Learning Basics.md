@@ -219,6 +219,60 @@ Dropout is a regularization technique for reducing overfitting in neural network
 Dropout
 </center>
 
+#Convolutional Networks
+
+convolutional neural networks or CNNs, are a specialized kind of neural network for processing data that has a known, grid-like topology. Examples include time-series data, which can be thought of as a 1D grid taking samples at regular time intervals, and image data, which can be thought of as a 2D grid of pixels.
+They are simply neural networks that use convolution in place of general matrix
+multiplication in at least one of their layers.
+
+##Convolution layer (CONV)
+
+The convolution layer (CONV) uses filters that perform convolution operations as it is scanning the input I with respect to its dimensions. Its hyperparameters include the filter size F(Dimension F x F X C) and stride S. The resulting output O  is called feature map or activation map(Dimension O x O X 1). We can also Pad the image with Zeros to match the size of image to dimmentions of the filter and stride.
+
+<p align="center">
+<img src="https://imgur.com/UEs1MvX.jpg">
+
+</p>
+
+<center>
+Conv Layer ( From Deep Learning Book)
+</center>
+
+Convolution leverages three important ideas that can help improve a machine
+learning system: sparse interactions, parameter sharing and equivariant
+representations. Sparse interactions is accomplished by making the kernel smaller than the input , Paramameters are shared across the image space and due to the convolution operation we have equivariance to translation which means that if the input changes, the output changes in the same way.
+
+##Pooling layer (POOL)
+
+The pooling layer (POOL) is a downsampling operation, typically applied after a convolution layer, which does some spatial invariance. In particular, max and average pooling are special kinds of pooling where the maximum and average value is taken,
+
+<p align="center">
+<img src="https://stanford.edu/~shervine/images/max-pooling-a.png">
+
+</p>
+<center>
+Pool Layer ( Credit shervine Amidi)
+</center>
+
+##Fully Connected (FC) layer
+The fully connected layer (FC) operates on a flattened input where each input is connected to all neurons.
+
+
+<p align="center">
+<img src="https://stanford.edu/~shervine/images/fully-connected.png">
+
+</p>
+center>
+Pool Layer ( Credit shervine Amidi)
+</center>
+
+
+#
+
+
+
+
+
 
 
 
