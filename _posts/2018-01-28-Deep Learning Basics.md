@@ -84,8 +84,35 @@ Multiplying by the inverse Hessian leads the optimization to take more aggressiv
 
 However, the update above is impractical for most deep learning applications because computing (and inverting) the Hessian in its explicit form is a very costly process in both space and time. For instance, a Neural Network with one million parameters would have a Hessian matrix of size [1,000,000 x 1,000,000] which is computationally expensive.  There are algorithms such as L-BFGS, which uses the information in the gradients over time to form the approximation implicitly (i.e. the full matrix is never computed). However these do not work in mini batch settings hence are not commonly used with Deep learning.
 
+ Instead of initializing the weights in a purely random manner, Xavier initialization enables to have initial weights that take into account characteristics that are unique to the architecture. If W is the weights gaussian distribution and N is the number of neurons.
+
+$$\operatorname { Var } ( W ) = \frac { 1 } { n _ { \mathrm { in } } }$$
+
+To reduce dependence on initialization we use Batch Norm . It is usually done after a fully connected/convolutional layer and before a non-linearity layer and aims at allowing higher learning rates. $\gamma ,\beta$ are the hyperparameters while $\mu , \sigma$ are the mean and variance of the batch which we want to normzlize.
+
+$$  { x _ { i } \leftarrow \gamma \frac { x _ { i } - \mu _ { B } } { \sqrt { \sigma _ { B } ^ { 2 } + \epsilon } } + \beta } $$
 
 
+There are other optimization methods with adaptive learning rates
+
+<p align="center">
+<img src="https://imgur.com/KTCmBYy.jpg">
+
+</p>
+
+<center>
+Optimization methods
+</center>
+
+
+<p align="center">
+<img src="http://cs231n.github.io/assets/nn3/opt2.gif">
+
+</p>
+
+<center>
+Optimization methods comparison ( Credit Alec Radford)
+</center>
 
 # Feedforward neural networks
 
@@ -176,7 +203,25 @@ network performance from 1986 to now can be attributed to larger datasets and to
 
 #REGULARIZATION FOR DEEP LEARNING
 
-Along with the L1(Lasso) and L2(Ridge) REGULARIZATION from Classic machine learning we can also
+We can use the L1(Lasso) and L2(Ridge) REGULARIZATION from Classic machine learning.
+
+L1 regularization is defined as $\lambda \| \theta \| _ { 1 }$ while
+L2 regularization is defined as  $\lambda \| \theta \| _ { 2 } ^ { 2 }$
+
+Dropout is a regularization technique for reducing overfitting in neural networks by preventing complex co-adaptations on training data. It drops out neurons with probability p > 0 and forces the model to avoid relying too much on particular sets of features.
+
+<p align="center">
+<img src="https://s3-ap-south-1.amazonaws.com/av-blog-media/wp-content/uploads/2017/05/20073927/dropout.png">
+
+</p>
+
+<center>
+Dropout
+</center>
+
+
+
+
 
 Python code block:
 ```python
