@@ -1,5 +1,5 @@
 ---
-title: "Python Data Structure 2
+title: "Python Data Structure 2"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
