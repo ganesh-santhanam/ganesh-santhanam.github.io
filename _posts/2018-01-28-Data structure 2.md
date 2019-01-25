@@ -346,3 +346,43 @@ bfs.bfs(node1);
 
 <center>
 Comparison of search algorithms </center>
+
+
+#Computational Complexity
+
+There are multiple classes for decision problems but the most famous ones are: P and NP.
+
+P
+P stands for polynomial time class, it means that the run-time of an algorithm for finding an answer in this class is considered “efficient” or “fast”.. This class contains all the problems that can be solved by a “reasonably fast” program by a deterministic Turing machine. Finding and checking an answer for an P problem is fast, independent of the size of input. These problems are called tractable, while others are called intractable or superpolynomial.
+
+NP
+NP class stands for non-Deterministic Polynomial time class. The problems in this class can be at least checked if right or wrong in polynomial time given an deterministic machine. But finding the answer takes huge time, given an huge input. Hard to find the answer, easy to check.
+
+NP Complete
+This class belongs inside NP class, it contains problems that can be reduced to others problems. If found an polynomial time answer to any problem in this class, would means that we can also find a answer in polynomial time to all NP problems. Proving P = NP. But today there’s no known efficient way to locate a solution in the first place, the most notable characteristic of NP-complete problems is that no fast solution to them is known.
+
+A decision problem L is NP-complete if:
+1) L is in NP (Any given solution for NP-complete problems can be verified quickly, but there is no efficient known solution).
+2) Every problem in NP is reducible to L in polynomial time
+
+P vs NP
+ If someone could find an answer in polynomial time for some NP-complete problem, it could be reduced and used the same strategy in any NP problem, meaning P = NP.
+
+
+<p align="center">
+<img src="https://cdn-images-1.medium.com/max/880/1*_U66IGv8x3Y7JQ3yi-jQ_Q.png">
+
+</p>
+
+<center>
+If $\mathrm { P } \neq \mathrm { NP }$
+</center>
+
+<p align="center">
+<img src="https://cdn-images-1.medium.com/max/880/1*29McNRcMkAEUx0vwflGmMA.png">
+
+</p>
+
+<center>
+If P = NP
+</center>
