@@ -32,6 +32,15 @@ Here's a numbered list:
 2. Second
 3. Third
 
+Active learning is a special case of machine learning in which a learning algorithm is able to interactively query the user (or some other information source called the oracle  to obtain the desired outputs at new data points. There are situations in which unlabeled data is abundant but manually labeling is expensive. In such a scenario, learning algorithms can actively query the user/teacher for labels. This type of iterative supervised learning is called active learning. Since the learner chooses the examples, the number of examples to learn a concept can often be much lower than the number required in normal supervised learning.
+
+
+
+
+
+
+
+
 Python code block:
 ```python
     import numpy as np
@@ -69,3 +78,7 @@ $$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ {
 <center>
 *Fig. 2: The minimum dominating set of a graph*
 </center>
+
+Reference
+Olsson, Fredrik (April 2009). "A literature survey of active machine learning in the context of natural language processing". SICS Technical Report T2009:06.
+ Settles, Burr (2010). "Active Learning Literature Survey" (PDF). Computer Sciences Technical Report 1648. University of Wisconsin–Madison. Retrieved 2014-11-18.
