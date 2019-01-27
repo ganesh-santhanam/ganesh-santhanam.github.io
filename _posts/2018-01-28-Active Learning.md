@@ -1,10 +1,6 @@
 ---
 title: "Active Learning"
 date: 2018-01-28
-tags: [machine learning, data science, neural network]
-header:
-  image: "/images/perceptron/percept.jpg"
-excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
 

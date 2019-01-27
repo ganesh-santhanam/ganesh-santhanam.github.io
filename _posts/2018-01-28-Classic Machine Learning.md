@@ -1,10 +1,6 @@
 ---
 title: "Statistical Machine Learning"
 date: 2018-01-28
-tags: [machine learning, data science, neural network]
-header:
-  image: "/images/perceptron/percept.jpg"
-excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
 Machine learning algorithms build a mathematical model of sample data, known as "training data", in order to make predictions or decisions without being explicitly programmed to perform the task  
