@@ -11,16 +11,16 @@ We can only see x, but we would like to infer the characteristics of z.
 $$p ( z | x ) = \frac { p ( x | z ) p ( z ) } { p ( x ) }$$
 
 However the denominator term is intractable
-$$p ( x ) = \int p ( x | z ) p ( z ) d z$$
+$$p ( x ) = \int p ( x | z ) p ( z ) d z$$  
 
 To approximate this we can use variational inference where we are interested in maximizing the evidence lower bound (ELBO). Let's approximate p(z|x) by another distribution q(z|x) which we'll define such that it has a tractable distribution. If we can define the parameters of q(z|x) such that it is very similar to p(z|x), we can use it to perform approximate inference of the intractable distribution.
 
-Recall that the KL divergence is a measure of difference between two probability distributions. Thus, if we wanted to ensure that q(z|x) was similar to p(z|x), we could minimize the KL divergence between the two distributions.
+Recall that the KL divergence is a measure of difference between two probability distributions. Thus, if we wanted to ensure that q(z|x) was similar to p(z|x), we could minimize the KL divergence between the two distributions.  
 
 $$\min K L ( q ( z | x ) \| p ( z | x ) ) = argmax\  E _ { q ( z | x ) } \log p ( x | z ) - K L ( q ( z | x ) \| p ( z ) )$$
 
-Since we cannot directly backprop over the sampling we use the reparametrization trick
-First, we sample a noise variable ϵ from a simple distribution like the standard normal
+Since we cannot directly backprop over the sampling we use the reparametrization trick. First, we sample a noise variable ϵ from a simple distribution like the standard normal.  
+
 $$\epsilon \sim p ( \epsilon )$$
 
 Then, we apply a deterministic transformation $g _ { \phi } ( \epsilon , x )$ that maps the random noise into a more complex distribution.
@@ -361,3 +361,8 @@ def main():
 if __name__ == '__main__':
   main()
 ```
+
+References:
+1. Kingma, D. P. and Welling, M. (2014).  Auto-encoding variational bayes.  InProceedings of the Interna-tional Conference on Learning Representations (ICLR).
+2. Tim Salimans, Diederik Kingma, and Max Welling. Markov chain montecarlo and variational inference: Bridging the gap.ICML, 2015
+3. Alex Krizhevsky, Ilya Sutskever, and Geoff Hinton. Imagenet classifica-tion with deep convolutional neural networks. InNIPS, 2012

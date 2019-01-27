@@ -3,7 +3,8 @@ title: "Unit Testing"
 date: 2018-01-28
 mathjax: "true"
 ---
-#Unit Testing
+
+# Unit Testing
 
 Unit testing involves breaking your program into pieces, and subjecting each piece to a series of tests.They should be done as often as possible. When you are performing tests as part of the development process, your code is automatically going to be designed better . Unit testing reduces the number of bugs released during deployment, making it critical to effective software development.
 Python has multiple unit testing packages. Here we are going to use PyTest
@@ -40,7 +41,7 @@ test_sample.py:5: AssertionError
 ========================= 1 failed in 0.12 seconds =========================
 ```
 
-#Assert that a certain exception is raised
+# Assert that a certain exception is raised
 ```python
 import pytest
 def f():
@@ -55,7 +56,7 @@ $ pytest -q test_sysexit.py
 1 passed in 0.12 seconds
 ```
 
-#pytest fixtures
+# Pytest fixtures
 We can add specific code to run:
 
 * at the beginning and end of a module of test code (setup_module/teardown_module)
@@ -152,7 +153,8 @@ teardown_module   module:test_um_pytest_fixtures
 * Always use 4 spaces for indentation (don’t use tabs)
 * Write in ASCII in Python 2 and UTF-8 in Python 3
 * Max line-length: 72 characters (especially in comments)
-* Always indent wrapped code for readablility
+* Always indent wrapped code for readability  
+
 ```python
 # Good:
 result = some_function_that_takes_arguments(
@@ -166,13 +168,14 @@ result = some_function_that_takes_arguments(
 'argument one,
 'argument two', 'argument three')
 result2 = some_function_that_takes_arguments('argument one', 'argument two', 'argument three')
-```
+```  
 
 #Imports
 * Don’t use wildcards
 * Try to use absolute imports over relative ones
 * When using relative imports, be explicit (with .)
-* Don’t import multiple packages per line
+* Don’t import multiple packages per line  
+
 ```python
 # Good:
 import os
@@ -185,7 +188,8 @@ from .sibling import example # Acceptable
 import os, sys # multiple packages
 import sibling # local module without "."
 from mypkg import * # wildcards
-```
+```  
+
 
 #Whitespace and newlines
 * 2 blank lines before top-level function and class definitions
@@ -196,7 +200,8 @@ from mypkg import * # wildcards
 * Spaces around = for assignment
 * No spaces around = for default parameter values
 * Spaces around mathematical operators, but group them sensibly
-* Multiple statements on the same line are discouraged
+* Multiple statements on the same line are discouraged  
+
 ```python
 # Good:
 spam(ham[1], {eggs: 2})
@@ -224,7 +229,8 @@ c = (a + b) * (a - b) # Too much space around operators
 def complex(real, imag = 0.0):
     return magic(r = real, i = imag) # Spaces in default values
 
-```    
+```   
+
 # Comments
 * Keep comments up to date - incorrect comments are worse than no comments
 * Write in whole sentences
@@ -235,7 +241,9 @@ def complex(real, imag = 0.0):
 * Docstrings should start and end with """
 * Docstring one-liners can be all on the same line
 * In docstrings, list each argument on a separate line
-* Docstrings should have a blank line before the final """
+* Docstrings should have a blank line before the final """   
+
+
 ```python
 
 def my_function():
@@ -249,7 +257,8 @@ def my_other_function(parameter=False):
     parameter -- an example parameter (default False)
 
     """
-```
+```  
+
 #Naming conventions
 * Class names in CapWords
 * Method, function and variables names in lowercase_with_underscores
@@ -258,7 +267,9 @@ def my_other_function(parameter=False):
 * If you need to use a reserved word, add a _ to the end (e.g. class_)
 * Always use self for the first argument to instance methods
 * Always use cls for the first argument to class methods
-* Never declare functions using lambda (f = lambda x: 2*x)
+* Never declare functions using lambda (f = lambda x: 2*x)  
+
+
 ```python
 class MyClass:
     """ A purely illustrative class """

@@ -20,25 +20,26 @@ Given a, n and e , with 0<a<n and e > 1 calculating $a ^ { e } ( \mathrm { mod }
 * However, if the multiplicative inverse of e modulo $\phi ( n ) = ( q - 1 ) ( p - 1 )$ labelled d is given, then the previous calculation is easy.
 * Calculating d from only n and e is difficult, but easy if the factorization of n=pq is known.
 
-# The steps for the algorithm is as follows:
-##Key Generation:
-Generate distinct primes p and q and let n=pq.Also let $m=\phi(n)=(p-1)(q-1)$  and pick any 1<e<m. Calculate d as the multiplicative inverse of e modulo m using the extended Euclidean algorithm. The private key is then (n, d) and the public key is (n, e).
+# The steps for the algorithm is as follows:  
 
-##Encryption
+## Key Generation:
+Generate distinct primes p and q and let n=pq. Also let $m=\phi(n)=(p-1)(q-1)$  and pick any 1<e<m. Calculate d as the multiplicative inverse of e modulo m using the extended Euclidean algorithm. The private key is then (n, d) and the public key is (n, e).  
 
-To encrypt plaintext, first encode the plaintext (by padding it for example) so that it consists of blocks of size less than n. Then for block a, define $E(a)=a^e \pmod{n}$ as the encryption function.
+## Encryption
 
-##Decryption:
-To decrypt ciphertext given by c = E(a) define $D(c) = c^d \pmod{n}$. We then have $D(c)=D(E(a))=a^{ed} \pmod{n}$. For this to work, we need $a^{ed}=a \pmod{n}$
+To encrypt plaintext, first encode the plaintext (by padding it for example) so that it consists of blocks of size less than n. Then for block a, define $E(a)=a^e \pmod{n}$ as the encryption function.  
+
+## Decryption:
+To decrypt ciphertext given by c = E(a) define $D(c) = c^d \pmod{n}$. We then have $D(c)=D(E(a))=a^{ed} \pmod{n}$. For this to work, we need $a^{ed}=a \pmod{n}$  
 
 
-#Key Generation and Primality Tests
+# Key Generation and Primality Tests
 
 To start, our key generation requires us to generate two large primes p and q.
 To generate a large prime p,p, we start by deciding the number of bits we require in the prime. Let's call this number b and let's assume for simplicity that b>8 for all our intended purposes. In practice, b is usually between 512 and 2048.
 Then we proceed to check t+it+i for primality starting from i=0i=0 and onwards.
 
-We use the Rabin-Miller algorithms to check if the number is prime or not. Then implement the RSA algorithm using the steps mentiond above
+We use the Rabin-Miller algorithms to check if the number is prime or not. Then implement the RSA algorithm using the steps mentioned above
 
 <p align="center">
 <img src="https://imgur.com/FKRE08g.jpg">
@@ -49,7 +50,7 @@ We use the Rabin-Miller algorithms to check if the number is prime or not. Then 
 RSA Algorithm
 </center>
 
-Python code block:
+
 ```python
 def generate_random_prime(bits, primality_test):
     """Generate random prime number with n bits."""

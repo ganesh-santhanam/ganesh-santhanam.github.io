@@ -9,35 +9,49 @@ Simple(“naive”) classifica1on method based on Bayes rule. It relies on very 
 
 If assumes conditional independence (Hence Naive) and assumes that position does not matter ( Bag of words)
 
-For a document d and class c
-$$P ( c | d ) = \frac { P ( d | c ) P ( c ) } { P ( d ) }$$
-$$c _ { M A P } = \underset { c \in C } { \operatorname { argmax } } P ( c | d )$$
-This is the MAP estimate of the class. Then using Bayes Rule
-$$= \underset { c \in C } { \operatorname { argmax } } \frac { P ( d | c ) P ( c ) } { P ( d ) }$$
+For a document d and class c  
 
-We can drop the denominator as it does not affect the maxima.
-$$= \underset { c \in C } { \operatorname { argmax } } P ( d | c ) P ( c )$$
-AS the document D is represented as features x1 to xn(Bag of words)
+$$P ( c | d ) = \frac { P ( d | c ) P ( c ) } { P ( d ) }$$  
+
+$$c _ { M A P } = \underset { c \in C } { \operatorname { argmax } } P ( c | d )$$  
+
+This is the MAP estimate of the class.
+
+Then using Bayes Rule  
+
+$$= \underset { c \in C } { \operatorname { argmax } } \frac { P ( d | c ) P ( c ) } { P ( d ) }$$  
+
+We can drop the denominator as it does not affect the maxima.  
+
+$$= \underset { c \in C } { \operatorname { argmax } } P ( d | c ) P ( c )$$  
+
+As the document D is represented as features x1 to xn (Bag of words)  
+
 $$= \underset { c \in C } { \operatorname { argmax } } P \left( x _ { 1 } , x _ { 2 } , \ldots , x _ { n } | c \right) P ( c )$$
 
-For Multinomial case
+For Multinomial case  
+
 $$c _ { N B } = \underset { c \in C } { \operatorname { argmax } } P \left( c _ { j } \right) \prod _ { x \in X } P ( x | c )$$
 
-For MLE estimates we can simply use the frequencies
-$$\hat { P } \left( c _ { j } \right) = \frac { \operatorname { doccount } \left( C = c _ { j } \right) } { N _ { d o c } }$$
+For MLE estimates we can simply use the frequencies  
 
-$$\hat { P } \left( w _ { i } | c _ { j } \right) = \frac { \operatorname { count } \left( w _ { i } , c _ { j } \right) } { \sum _ { w \in V } \operatorname { count } \left( w , c _ { j } \right) }$$
+$$\hat { P } \left( c _ { j } \right) = \frac { \operatorname { doccount } \left( C = c _ { j } \right) } { N _ { d o c } }$$  
 
-This has an isssue with unseen data as they would have zero probabilities. To resolve this we can use smoothing methods for Naive Bayes by adding one extra word to the vocabulary $W _ { u }$
+$$\hat { P } \left( w _ { i } | c _ { j } \right) = \frac { \operatorname { count } \left( w _ { i } , c _ { j } \right) } { \sum _ { w \in V } \operatorname { count } \left( w , c _ { j } \right) }$$  
 
- The Laplace(add-­1) smoothing for Naive Bayes is as follows:
- $$\hat { P } \left( w _ { u } | c \right) = \frac { \operatorname { count } \left( w _ { u } , c \right) + 1 } { \left( \sum _ { n \in V } \operatorname { count } ( w , c ) \right) + | V + 1 | }$$
-$$= \frac { 1 } { \left( \sum _ { w \in V } \operatorname { count } ( w , c ) \right) + | V + 1 | }$$
+This has an issues with unseen data as they would have zero probabilities. To resolve this we can use smoothing methods for Naive Bayes by adding one extra word to the vocabulary $W _ { u }$  
 
-Let us now loot at an example of Multinomial Naive Bayes Classifier for the 20 Newsgroups dataset (http://qwone.com/~jason/20Newsgroups/). We use smoothing , stop words removal and use Inverse document frequency (IDF) instead of raw frequencies.
+ The Laplace(add-­1) smoothing for Naive Bayes is as follows:  
 
-IDF = $t _ { i } = \log \left( \frac { \sum _ { n = 1 } ^ { N } \operatorname { doc } _ { n } } { \operatorname { doc } _ { i } } \right)$
-$$\operatorname { Pr } ( j ) = \log \pi _ { j } + \sum _ { i = 1 } ^ { | V | } f _ { i } \log \left( t _ { i } \operatorname { Pr } ( i | j ) \right)$$
+ $$\hat { P } \left( w _ { u } | c \right) = \frac { \operatorname { count } \left( w _ { u } , c \right) + 1 } { \left( \sum _ { n \in V } \operatorname { count } ( w , c ) \right) + | V + 1 | }$$  
+
+$$= \frac { 1 } { \left( \sum _ { w \in V } \operatorname { count } ( w , c ) \right) + | V + 1 | }$$  
+
+Let us now loot at an example of Multinomial Naive Bayes Classifier for the 20 Newsgroups dataset (http://qwone.com/~jason/20Newsgroups/). We use smoothing , stop words removal and use Inverse document frequency (IDF) instead of raw frequencies.  
+
+IDF = $t _ { i } = \log \left( \frac { \sum _ { n = 1 } ^ { N } \operatorname { doc } _ { n } } { \operatorname { doc } _ { i } } \right)$  
+
+$$\operatorname { Pr } ( j ) = \log \pi _ { j } + \sum _ { i = 1 } ^ { | V | } f _ { i } \log \left( t _ { i } \operatorname { Pr } ( i | j ) \right)$$  
 
 
 <p align="center">
@@ -47,9 +61,10 @@ $$\operatorname { Pr } ( j ) = \log \pi _ { j } + \sum _ { i = 1 } ^ { | V | } f
 
 <center>
 Error %
-</center>
+</center>   
 
-Python code block:
+
+
 ```python
 import numpy as np
 import pandas as pd

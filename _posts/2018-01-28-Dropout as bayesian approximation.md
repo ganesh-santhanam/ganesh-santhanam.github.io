@@ -175,10 +175,9 @@ $$q \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } \right) = \int p \left(
 MC dropout averages over T forward passes  thru the network at test time. To estimate test mean and uncertainity by simply collecting the stochastic dropout forward passes.
 
 
-References
-
+# References
 
 1.Srivastava et al  Dropout:A simple way to prevent neural networks from overfitting,2014  
 2.Abadi et al ,TensorFlow: Large-scale machine learning on heterogeneous systems, 2015
-3.Gal and Ghahramani: Dropout as Bayesian approxiamtion: Representing model uncertainity in deep learning 2015
-4.Radford Neal:Monte Carlo Implementation of Gaussian Process Models for Bayesian Regression and Classification 1997
+3.Gal and Ghahramani: Dropout as Bayesian approximation: Representing model uncertainty in deep learning 2015
+4.Radford Neal: Monte Carlo Implementation of Gaussian Process Models for Bayesian Regression and Classification 1997

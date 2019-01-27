@@ -4,8 +4,6 @@ mathjax: "true"
 ---
 
 
-
-
 <p align="center">
 <img src="https://imgur.com/Elz8Sdg.jpg">
 

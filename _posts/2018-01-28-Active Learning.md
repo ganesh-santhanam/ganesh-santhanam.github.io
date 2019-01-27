@@ -4,51 +4,47 @@ date: 2018-01-28
 mathjax: "true"
 ---
 
+# Active Learning   
 
 Active learning is a special case of machine learning in which a learning algorithm is able to interactively query the user (or some other information source called the oracle  to obtain the desired outputs at new data points. There are situations in which unlabeled data is abundant but manually labeling is expensive. In such a scenario, learning algorithms can actively query the user/teacher for labels. This type of iterative supervised learning is called active learning. Since the learner chooses the examples, the number of examples to learn a concept can often be much lower than the number required in normal supervised learning.
 
 
-  There are three scenarios for Active Learning:
+There are three scenarios for Active Learning:  
 
-  1. Membership query synthesis, i.e., a generated sample is sent to an oracle for labeling.
-  2. Stream-Based selective sampling, i.e, each sample is considered separately -in our case for label-querying or rejection. Similarly to online-learning, the data is not saved, there are no assumptions on data distribution, and therefore it is adaptive to change.
-  3. Pool-Based sampling, i.e., sampled are chosen from a pool of unlabeled data for the purpose of labeling
+1. Membership query synthesis, i.e., a generated sample is sent to an oracle for labeling.  
+2. Stream-Based selective sampling, i.e, each sample is considered separately -in our case for label-querying or rejection. Similarly to online-learning, the data is not saved, there are no assumptions on data distribution, and therefore it is adaptive to change.  
+3. Pool-Based sampling, i.e., sampled are chosen from a pool of unlabeled data for the purpose of labeling.   
 
-  <p align="center">
-  <img src="https://imgur.com/gwSIhSI.jpg">
+<p align="center">
+<img src="https://imgur.com/gwSIhSI.jpg">
 
-  </p>
+</p>
 
-  <center>
-  Types of Active Learning Source:Burr Settles
-  </center>
+<center>
+Types of Active Learning Source:Burr Settles
+</center>  
 
-  <p align="center">
-  <img src="https://imgur.com/xjDoktH.jpg">
+<p align="center">
+<img src="https://imgur.com/xjDoktH.jpg">
 
-  </p>
+</p>
 
-  <center>
-  Pool Based Active Learning  Source:Burr Settles
-  </center>
-
-
-#Uncertainty sampling
-
-All active learning scenarios involve evaluating the informativeness of unlabeledinstances, which can either be generated de novo or sampled from a given distribu-tion.
-
-Perhaps the simplest and most commonly used query framework isuncertaintysampling(Lewis and Gale, 1994).  In this framework, an active learner queriesthe instances about which it is least certain how to label.  This approach is often straightforward  for  probabilistic  learning  models
-
-Least Confidence (LC): in this strategy, the learner selects the instance for which it has the least confidence in its most likely label.
-
-Margin Sampling: the shortcoming of the LC strategy, is that it only takes into consideration the most probable label and disregards the other label probabilities. The margin sampling strategy seeks to overcome this disadvantage by selecting the instance that has the smallest difference between the first and second most probable labels.
-
-Entropy Sampling: in order to utilize all the possible label probabilities, you use a popular measure called entropy. The entropy formula is applied to each instance and the instance with the largest value is queried.
+<center>
+Pool Based Active Learning  Source:Burr Settles
+</center>  
 
 
-We compare several learning algorithms, such as support vector machine (SVM) with a linear kernel, random forest (RF) and logistic regression (LOG). Each algorithm was executed with all of the selection functions using all ‘k’ = [10,25,50,125,250], accumulating a total of 80 experiment on MNIST.
+# Uncertainty sampling  
 
-For this example the random forest classifier with hyperparameter k=10 performs best
+All active learning scenarios involve evaluating the informativeness of unlabeled instances, which can either be generated de novo or sampled from a given distribution.  
+
+Perhaps the simplest and most commonly used query framework is uncertainty sampling(Lewis and Gale, 1994).  In this framework, an active learner queries the instances about which it is least certain how to label. This approach is often straightforward  for probabilistic learning  models.
+
+* Least Confidence (LC): in this strategy, the learner selects the instance for which it has the least confidence in its most likely label.  
+* Margin Sampling: the shortcoming of the LC strategy, is that it only takes into consideration the most probable label and disregards the other label probabilities. The margin sampling strategy seeks to overcome this disadvantage by selecting the instance that has the smallest difference between the first and second most probable labels.  
+* Entropy Sampling: in order to utilize all the possible label probabilities, you use a popular measure called entropy. The entropy formula is applied to each instance and the instance with the largest value is queried.  
+
+We compare several learning algorithms, such as support vector machine (SVM) with a linear kernel, random forest (RF) and logistic regression (LOG). Each algorithm was executed with all of the selection functions using all ‘k’ = [10,25,50,125,250], accumulating a total of 80 experiment on MNIST. For this example the random forest classifier with hyperparameter k=10 performs best.  
 
 <p align="center">
 <img src="https://cdn-images-1.medium.com/max/880/1*EjQfpWcHDFR0wQsh0K6qeg.png">
@@ -59,8 +55,12 @@ For this example the random forest classifier with hyperparameter k=10 performs 
 Active Learning on Mnist
 </center>
 
+# Reference
 
-Python code block:
+1. Olsson, Fredrik (April 2009). "A literature survey of active machine learning in the context of natural language processing". SICS Technical Report T2009:06.
+2. Settles, Burr (2010). "Active Learning Literature Survey" (PDF). Computer Sciences Technical Report 1648. University of Wisconsin–Madison. Retrieved 2014-11-18.
+
+
 ```python
 import os
 import time
@@ -545,18 +545,3 @@ stopped_at = -1
 d = experiment(d, models, selection_functions, Ks, repeats, stopped_at+1)
 print(json.dumps(d, indent=2, sort_keys=True))
 ```
-
-
-
-<p align="center">
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
-
-</p>
-
-<center>
-*Fig. 2: The minimum dominating set of a graph*
-</center>
-
-Reference
-Olsson, Fredrik (April 2009). "A literature survey of active machine learning in the context of natural language processing". SICS Technical Report T2009:06.
- Settles, Burr (2010). "Active Learning Literature Survey" (PDF). Computer Sciences Technical Report 1648. University of Wisconsin–Madison. Retrieved 2014-11-18.

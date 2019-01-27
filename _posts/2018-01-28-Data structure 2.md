@@ -12,7 +12,17 @@ Sorting algorithms are classified into comparison sorts (Which cannot perform be
 
 Some of the most commonly used comparison sort algorithms are merge sort and quick sort
 
-#Merge-Sort
+<p align="center">
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/2d5308d.JPG">
+
+</p>
+
+<center>
+Comparison of sorting algorithms
+</center>
+
+
+# Merge-Sort  
 
 This uses algorithmic design pattern called divide-and-conquer which consists the following steps to sort a sequence S with n elements
 
@@ -32,7 +42,6 @@ Merge Sort
 
 Algorithm merge-sort sorts a sequence S of size n in O(n log n) time, assuming two elements of S can be compared in O(1) time.
 
-Python code block:
 ```python
 
 def merge_sort(nums):
@@ -75,15 +84,14 @@ print(nums)
 
 ```
 
-#Quick-Sort
+# Quick-Sort  
 
 This algorithm is also based on the divide-and-conquer paradigm,
 
-* Divide: If S has at least two elements , select a element x from S called the pivot. It is common practice to choose the pivot x to be the last element in S.
-Then Remove all the elements from S and put them into three sequences:  
-** L, storing the elements in S less than x  
-** E, storing the elements in S equal to x  
-** G, storing the elements in S greater than x
+* Divide: If S has at least two elements , select a element x from S called the pivot. It is common practice to choose the pivot x to be the last element in S. Then Remove all the elements from S and put them into three sequences.
+* L, storing the elements in S less than x
+* E, storing the elements in S equal to x  
+* G, storing the elements in S greater than x
 * Conquer: Recursively sort sequences L and G
 * Combine: Put back the elements into S in order by first inserting the elements of L, then those of E, and finally those of G.
 
@@ -96,9 +104,9 @@ Then Remove all the elements from S and put them into three sequences:
 Quick Sort
 </center>
 
- The running time of an execution of quick-sort as O(n · h) where h is the overall height of the quick-sort tree T for that execution. Thus quick-sort runs in O(nlogn) time
+The running time of an execution of quick-sort as O(n · h) where h is the overall height of the quick-sort tree T for that execution. Thus quick-sort runs in O(nlogn) time.  
 
- ```python
+```python
 
 def quick_sort(nums,low,high):
 
@@ -133,28 +141,15 @@ def swap(nums,i,j):
 
 
 ```  
-<p align="center">
-<img src="https://he-s3.s3.amazonaws.com/media/uploads/2d5308d.JPG">
 
-</p>
+# Dynamic Programming  
 
-<center>
-Comparison of sorting algorithms
-</center>
+It refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner.
 
-# Dynamic Programming
+## Dynamic Programming for Coin change problem
 
- it refers to simplifying a complicated problem by breaking it down into simpler sub-problems in a recursive manner.
+A classic example of an optimization problem involves making change using the fewest coins . For Example let us take the example of a customer gives 1 dollar and purchases for 37 cents. Assume  in addition to the usual 1, 5, 10, and 25 there is also a 21 cent coin. The key to cutting down on the amount of work we do is to remember some of the past results so we can avoid recomputing results we already know. This is called memoization.
 
-A classic example of an optimization problem involves making change using the fewest coins . For Example let us take the example of a customer gives 1 dollar and purchases for 37 cents. Assume  in addition to the usual 1, 5, 10, and 25 there is also a 21 cent coin.
-
-The key to cutting down on the amount of work we do is to remember some of the past results so we can avoid recomputing results we already know. This is called memoization.
-
-
-
-<center>
-Dynamic Programming for Coin change problem
-</center>
 
 ```python
 def recDC(coinValueList,change,knownResults):
@@ -176,9 +171,9 @@ def recDC(coinValueList,change,knownResults):
 print(recDC([1,5,10,25],63,[0]*64))
 ```
 
-#Graph Algorithm
+# Graph Algorithm
 
-A graph is a way of representing relationships that exist between pairs of objects. Graph G is simply a set V of vertices and a collection E of pairs of vertices from V, called edges. Edges in a graph are either directed or undirected.
+A graph is a way of representing relationships that exist between pairs of objects. Graph G is simply a set V of vertices and a collection E of pairs of vertices from V, called edges. Edges in a graph are either directed or undirected.  
 
 <p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Directed.svg">
@@ -189,11 +184,12 @@ A graph is a way of representing relationships that exist between pairs of objec
 A directed graph with three vertices (blue circles) and three edges (black arrows)
 </center>
 
-## Data Structures for Graphs
+## Data Structures for Graphs  
 * In an edge list, we maintain an unordered list of all edges. This minimally suffices, but there is no efficient way to locate a particular edge (u, v), or the set of all edges incident to a vertex v
 * In an adjacency list, we maintain, for each vertex, a separate list containing those edges that are incident to the vertex. The complete set of edges can be determined by taking the union of the smaller sets, while the organization allows us to more efficiently find all edges incident to a given vertex.
 * An adjacency map is very similar to an adjacency list, but the secondary container of all edges incident to a vertex is organized as a map, rather than as a list, with the adjacent vertex serving as a key. This allows for access to a specific edge (u, v) in O(1) expected time.
-* An adjacency matrix provides worst-case O(1) access to a specific edge (u, v) by maintaining an n × n matrix, for a graph with n vertices. Each entry is dedicated to storing a reference to the edge (u, v) for a particular pair of vertices u and v; if no such edge exists, the entry will be None.
+* An adjacency matrix provides worst-case O(1) access to a specific edge (u, v) by maintaining an n × n matrix, for a graph with n vertices. Each entry is dedicated to storing a reference to the edge (u, v) for a particular pair of vertices u and v; if no such edge exists, the entry will be None.  
+
 <p align="center">
 <img src="https://he-s3.s3.amazonaws.com/media/uploads/526213e.JPG">
 
@@ -202,7 +198,8 @@ A directed graph with three vertices (blue circles) and three edges (black arrow
 <center>
 Comparison of Graph Data Structures</center>
 
-# DEPTH-FIRST SEARCH
+# DEPTH-FIRST SEARCH(DFS)  
+
 Depth-first search is useful for testing a number of properties of graphs, including whether there is a path from one vertex to another and whether or not a graph is connected. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
 
 <p align="center">
@@ -211,7 +208,7 @@ Depth-first search is useful for testing a number of properties of graphs, inclu
 </p>
 
 <center>
-Depth first search</center>
+Depth first search</center>  
 
 
 ```python
@@ -252,18 +249,17 @@ dfs.dfs(node1);
 
 ```
 
-# BREADTH-FIRST SEARCH
- Is starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'[1]), and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level.
+# BREADTH-FIRST SEARCH (BFS)  
 
-A path in a breadth-first search tree rooted at vertex s to any other vertex v is guaranteed to be the shortest such path from s to v in terms of the number of edges.
+Is starts at the tree root (or some arbitrary node of a graph, sometimes referred to as a 'search key'[1]), and explores all of the neighbor nodes at the present depth prior to moving on to the nodes at the next depth level. A path in a breadth-first search tree rooted at vertex s to any other vertex v is guaranteed to be the shortest such path from s to v in terms of the number of edges.
 
- <p align="center">
- <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Breadth-First-Search-Algorithm.gif">
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Breadth-First-Search-Algorithm.gif">
 
- </p>
+</p>
 
- <center>
-Breadth first search</center>
+<center>
+Breadth first search</center>  
 
 ```python
 
@@ -316,27 +312,27 @@ bfs.bfs(node1);
 </p>
 
 <center>
-Comparison of search algorithms </center>
+Comparison of search algorithms </center>  
 
 
-#Computational Complexity
+# Computational Complexity  
 
 There are multiple classes for decision problems but the most famous ones are: P and NP.
 
-P
+# P
 P stands for polynomial time class, it means that the run-time of an algorithm for finding an answer in this class is considered “efficient” or “fast”.. This class contains all the problems that can be solved by a “reasonably fast” program by a deterministic Turing machine. Finding and checking an answer for an P problem is fast, independent of the size of input. These problems are called tractable, while others are called intractable or superpolynomial.
 
-NP
+# NP
 NP class stands for non-Deterministic Polynomial time class. The problems in this class can be at least checked if right or wrong in polynomial time given an deterministic machine. But finding the answer takes huge time, given an huge input. Hard to find the answer, easy to check.
 
-NP Complete
+# NP Complete
 This class belongs inside NP class, it contains problems that can be reduced to others problems. If found an polynomial time answer to any problem in this class, would means that we can also find a answer in polynomial time to all NP problems. Proving P = NP. But today there’s no known efficient way to locate a solution in the first place, the most notable characteristic of NP-complete problems is that no fast solution to them is known.
 
 A decision problem L is NP-complete if:
 1) L is in NP (Any given solution for NP-complete problems can be verified quickly, but there is no efficient known solution).
 2) Every problem in NP is reducible to L in polynomial time
 
-P vs NP
+# P vs NP
  If someone could find an answer in polynomial time for some NP-complete problem, it could be reduced and used the same strategy in any NP problem, meaning P = NP.
 
 
@@ -345,9 +341,7 @@ P vs NP
 
 </p>
 
-<center>
-If $\mathrm { P } \neq \mathrm { NP }$
-</center>
+
 
 <p align="center">
 <img src="https://cdn-images-1.medium.com/max/880/1*29McNRcMkAEUx0vwflGmMA.png">

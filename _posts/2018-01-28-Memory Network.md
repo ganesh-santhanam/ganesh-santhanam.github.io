@@ -31,10 +31,14 @@ Single Fact story
 Multiple Facts Story
 </center>
 
+# References
+[1] Kumar, Ankit et al. (2016) Ask Me Anything: Dynamic Memory Networks for Natural Language Process-ing.ArXiv e-prints[
+[2] Hermann, Karl Moritz et al. Teaching Machines to Read and Comprehend.ArXiv e-prints[5] Strzalkowski, Tomek & Sanda Harabagiu.
+[3] Xiong, Caiming et al.  (2016) Dynamic Memory Networks for Visual and Textual Question Answering.ArXiv e-prints
+[4] Westson, Jason et al. (2015) Memory Networks.ICLR 2015
 
 
 
-Python code block:
 ```python
 # https://deeplearningcourses.com/c/deep-learning-advanced-nlp
 from __future__ import print_function, division

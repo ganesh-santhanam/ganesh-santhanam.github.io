@@ -62,10 +62,22 @@ Big O notation is used in Computer Science to describe the performance or comple
 </p>
 
 <center>
- Growth rates of Common functions used in algorithm analysis
+ Growth rates of Common functions used in algorithm analysis(Source Goodrich and Tamassia)
 </center>
 
-Source Goodrich and Tamassia
+
+
+
+<p align="center">
+<img src="https://he-s3.s3.amazonaws.com/media/uploads/c14cb1f.JPG"">
+
+</p>
+
+<center>
+ Comparison of time and space complexity common data structures
+</center>
+
+
 
 
 # Recursion
@@ -74,7 +86,7 @@ An alternative to iteration using for or while loops is recursion. Recursion is 
 
 A Recursive Implementation of the Factorial Function
 
-Python code block:
+
 ```python
 def factorial(n):
    """Function to return the factorial
@@ -109,7 +121,7 @@ When creating a low-level array in a computer system, the precise size of that a
  Dynamic Array
 </center>
 
-Python code block:
+
 ```python
 import ctypes  # provides low-level arrays
 
@@ -228,7 +240,8 @@ Enqueue and Dequeue, which have amortized bounds of O(1) time
 
 # Double-Ended Queues
 
-Queue-like data structure that supports insertion and deletion at both the front and the back of the queue  is called a double-ended queue, or deque
+Queue-like data structure that supports insertion and deletion at both the front and the back of the queue  is called a double-ended queue, or deque.  
+
 ```Python
 class Deque:
     def __init__(self):
@@ -264,7 +277,8 @@ A singly linked list, in its simplest form, is a collection of nodes that collec
 
 <center>
  singly linked list
-</center>
+</center>  
+
 
 ```Python
 class Node(object):
@@ -295,20 +309,21 @@ class DoublyLinkedListNode(object):
         self.value = value
         self.next_node = None
         self.prev_node = None
-```
+```  
 
-#Link-Based vs. Array-Based Sequences
+# Link-Based vs. Array-Based Sequences
 
-##Advantages of Array-Based Sequences
+##  Advantages of Array-Based Sequences
 
 * Arrays provide O(1)-time access to any element. In contrast, locating the kth element in a linked list requires O(k) or possibly O(n – k) time
-* Array-based representations typically use proportionally less memory than linked structures as memory must be devoted to references that link the nodes.
+* Array-based representations typically use proportionally less memory than linked structures as memory must be devoted to references that link the nodes.  
 
-##Advantages of Link-Based Sequences
-* Link-based structures support O(1)-time insertions and deletions at arbitrary positions.
+## Advantages of Link-Based Sequences
+* Link-based structures support O(1)-time insertions and deletions at arbitrary positions.  
 
 
-#Binary Search Trees
+# Binary Search Trees  
+
 A binary search tree is a binary tree which  additionally satisfies the binary search property. The key in each node must be greater than or equal to any key stored in the left sub-tree, and less than or equal to any key stored in the right sub-tree
 
 <p align="center">
@@ -321,7 +336,6 @@ A binary search tree is a binary tree which  additionally satisfies the binary s
 </center>
 
 ```python
-or
 class Node(object):
 
 	def __init__(self, data):
@@ -436,7 +450,10 @@ class BinarySearchTree(object):
 
 ```
 
-There are many ways to traverse this Tre
+# Tree Traversal  
+
+There are many ways to traverse this Tree
+
 Depth First Traversals:
 (a) Inorder (Left, Root, Right)
 (b) Preorder (Root, Left, Right)
@@ -445,7 +462,7 @@ Depth First Traversals:
 
 An in-order traversal of a binary search tree will always result in a sorted list of node items. Pre-order traversal or a post-order traversal do not make sense for BST
 
-#Priority queue
+# Priority queue
 
 This is a collection of prioritized elements that allows arbitrary element insertion, and allows the removal of the element that has first priority. When an element is added to a priority queue, the user designates its priority by providing an associated key. The element with the minimum key will be the next to be removed from the queue
 
@@ -536,10 +553,10 @@ We can use the heap to sort which is called Heapsort. It is an in-place algorith
 
 <center>
  Heap Sort
-</center>
+</center>  
 
 
-#Hash Tables
+# Hash Tables
 
 Hash table  is a data structure that can map keys to values. A hash table uses a hash function to compute an index into an array of buckets or slots, from which the desired value can be found.
 
@@ -558,7 +575,8 @@ As the load factor grows larger, the hash table becomes slower. Hence we may hav
 
 <center>
  Hash Table
-</center>
+</center>  
+
 
 ```python
 class HashTable(object):
@@ -646,9 +664,10 @@ class HashTable(object):
     def __setitem__(self,key,data):
         self.put(key,data)
 
-```
+```  
 
-#Balanced Search Trees
+# Balanced Search Trees  
+
 A standard binary search tree supports O(logn) expected running times for the basic operations. However, we may only claim O(n) worst-case time, because some sequences of operations may lead to an unbalanced tree with height proportional to n. A self-balancing binary search tree is one that automatically keeps its height (maximal number of levels below the root) small in the face of arbitrary item insertions and deletions.
 
 A commonly used implementation of this is Red Black tree
@@ -659,11 +678,11 @@ A commonly used implementation of this is Red Black tree
 
 <center>
  Red Black Tree
-</center>
+</center>  
+
 
 ```python
 from .binary_search_tree import TreeMap
-
 class RedBlackTreeMap(TreeMap):
   """Sorted map implementation using a red-black tree."""
 
@@ -758,13 +777,4 @@ class RedBlackTreeMap(TreeMap):
 ```
 
 
-From Goodrich and Tamassia book
-
-<p align="center">
-<img src="https://he-s3.s3.amazonaws.com/media/uploads/c14cb1f.JPG"">
-
-</p>
-
-<center>
- Comparison of common data structures
-</center>
+Source: Goodrich and Tamassia book  

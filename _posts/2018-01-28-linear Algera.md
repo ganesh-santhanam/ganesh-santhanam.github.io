@@ -106,9 +106,10 @@ If a matrix does not have an inverse it is said to be non-invertible or singular
 Following are the properties of inverse
 * $\left( A ^ { - 1 } \right) ^ { - 1 } = A$
 * $( A B ) ^ { - 1 } = B ^ { - 1 } A ^ { - 1 }$
-* $\left( A ^ { - 1 } \right) ^ { T } = \left( A ^ { T } \right) ^ { - 1 }$
+* $\left( A ^ { - 1 } \right) ^ { T } = \left( A ^ { T } \right) ^ { - 1 }$  
 
-#Orthogonal Matrices
+
+# Orthogonal Matrices
 Two vectors x, y are orthogonal if $x ^ { T } y = 0$ . A vector x i normalized if $\| x \| _ { 2 } = 1$
 
 A square matrix U is orthogonal if all its columns are orthogonal to each other and are
@@ -117,9 +118,10 @@ $$U ^ { T } U = I = U U ^ { T }$$
 
 A nice property of orthogonal matrices is that operating on a vector with an
 orthogonal matrix will not change its Euclidean norm,
-$$\| U x \| _ { 2 } = \| x \| _ { 2 }$$
+$$\| U x \| _ { 2 } = \| x \| _ { 2 }$$  
 
-#Null Space, Column Space and span
+
+# Null Space, Column Space and span
 
 The span of a set of vectors is the set of all vectors that can be expressed asa linear combination of those vectors
 $$\operatorname { span } \left( \left\{ x _ { 1 } , \ldots x _ { n } \right\} \right) = \left\{  \sum _ { i = 1 } ^ { n } \alpha _ { i } x _ { i } , \quad \alpha _ { i } \in \mathbb { R } \right\}$$
@@ -128,9 +130,10 @@ The nullspace of a matrix is the is the set of all vectors that equal
 0 when multiplied by A,
 $$\mathcal { N } ( A ) = \left\{ x \in \mathbb { R } ^ { n } : A x = 0 \right\}$$
 
-The column space of A, denoted by C(A), is the span of the columns of A for all vectors
+The column space of A, denoted by C(A), is the span of the columns of A for all vectors.
 
-#The Determinant
+
+# The Determinant
 
 The determinant of a square matrix det A
 The  formula for determinant for an nxn matrix A is
@@ -141,12 +144,12 @@ Example for  a 2x2 matrix:
 $$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$  
 
 Properties of determinants are as follows:
--   $| A | = \left| A ^ { T } \right|$
--   $| A B | = | A | | B |$
--   $| A | = 0$ if and only if A is singular
--   For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
+1. $| A | = \left| A ^ { T } \right|$
+2. $| A B | = | A | | B |$
+3. $| A | = 0$ if and only if A is singular
+4. For non singular matrix $\left| A ^ { - 1 } \right| = 1 / | A |$
 
-#Eigenvalues and Eigenvectors
+# Eigenvalues and Eigenvectors
 
 Given a square matrix $A \in \mathbb { R } ^ { n \times n }$ ; $\lambda \in \mathbb { C }$ is an eigenvalue of A and $x \in \mathbb { C } ^ { n }$ is the eigenvector if
 
@@ -165,47 +168,3 @@ $$ A X = X \Lambda \quad or\quad  A = X \Lambda X ^ { - 1 }$$
 
 where
 $$ X \in \mathbb { R } ^ { n \times n } = \left[ \begin{array} { c c c c } { 1 } & { 1 } & { 1 } \\ { x _ { 1 } } & { x _ { 2 } } & { \cdots } & { x _ { n } } \\ { 1 } & { 1 } & { } & { 1 } \end{array} \right] , \Lambda = \operatorname { diag } \left( \lambda _ { 1 } , \ldots , \lambda _ { n } \right)$$
-
-
-
-
-
-
-
-Python code block:
-```python
-    import numpy as np
-
-    def test_function(x, y):
-      z = np.sum(x,y)
-      return z
-```
-
-R code block:
-```r
-library(tidyverse)
-df <- read_csv("some_file.csv")
-head(df)
-```
-
-Here's some inline code `x+y`.
-
-Here's some math:
-
-$$z=x+y$$
-
-Latex Math
-
-$$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
-
-
-
-
-<p align="center">
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
-
-</p>
-
-<center>
-*Fig. 2: The minimum dominating set of a graph*
-</center>

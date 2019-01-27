@@ -4,25 +4,23 @@ date: 2018-01-28
 mathjax: "true"
 ---
 
- # Blockchain With Elliptic Curve Digital Signature (ECDSA)
+# Blockchain With Elliptic Curve Digital Signature (ECDSA)
 
 As its core, a blockchain is a distributed database that allows direct transactions between two parties without the need of a central authority. This system solves an important problem in digital money called double-spending.
 
-To solve the double-spending problem, we have d a public ledger to  keep track of all transactions in the network.  It is Distributed ,Cryptographic, Immutable and uses Proof of Work (PoW) which A special type of participants called miners who compete on searching for the solution to a cryptographic puzzle that will allow them to add a block of transactions to the blockchain.
+To solve the double-spending problem, we have d a public ledger to  keep track of all transactions in the network. It is Distributed ,Cryptographic, Immutable and uses Proof of Work (PoW) which A special type of participants called miners who compete on searching for the solution to a cryptographic puzzle that will allow them to add a block of transactions to the blockchain.
 
- # The technical building blocks of blockchain
+# The technical building blocks of blockchain
 
 ## Public Key Cryptography
 
-RSA and Elliptic Curve Digital Signature (ECDSA).
+RSA and Elliptic Curve Digital Signature (ECDSA) are the most popular public-key cryptography algorithms. Here we are going to use Elliptic Curve Digital Signature (ECDSA).
 
-are the most popular public-key cryptography algorithms. Here we are going to use Elliptic Curve Digital Signature (ECDSA).
+### Elliptic curve cryptography
 
-###Elliptic curve cryptography
+This is based on the mathematics of elliptic curves which is the set of all points (x,y) that fulfill the equation  
 
-This is based on the mathematics of elliptic curves which is the set of all points (x,y) that fulfill the equation
-
-$$Y ^ { \wedge } 2 = x ^ { \wedge } 3 + a x + b$$
+$$Y ^ { \wedge } 2 = x ^ { \wedge } 3 + a x + b$$  
 
 <p align="center">
 <img src="https://cdn-images-1.medium.com/max/880/1*KKdvscN4y-NcGZ8Nnx1ZYQ.png">
@@ -31,9 +29,9 @@ $$Y ^ { \wedge } 2 = x ^ { \wedge } 3 + a x + b$$
 
 <center>
 Elliptic Curve
-</center>
+</center>  
 
-If you take an arbitrary point P = (x,y) on this curve and add it to another point Q on the curve, you will again get a point located on this very elliptic curve. You can also choose some point P on the curve and add it x-times to itself — you will still get a point located on the elliptic curve.
+If you take an arbitrary point P = (x,y) on this curve and add it to another point Q on the curve, you will again get a point located on this very elliptic curve. You can also choose some point P on the curve and add it x-times to itself — you will still get a point located on the elliptic curve.  
 
 <p align="center">
 <img src="https://cdn-images-1.medium.com/max/880/1*O6Hxnd6uwz6FY-AZm0ZExg.jpeg">
@@ -42,30 +40,33 @@ If you take an arbitrary point P = (x,y) on this curve and add it to another poi
 
 <center>
 Elliptic Curve
-</center>
+</center>  
 
-ECC depends on the hardness of the discrete logarithm problem
-$$P + P + \ldots + P = x P = R$$
+ECC depends on the hardness of the discrete logarithm problem  
+
+$$P + P + \ldots + P = x P = R$$  
 
 In this case, x is just an arbitrary natural number. In elliptic curve cryptography one uses the fact, that it is computationally infeasible to calculate the number x only by knowing the points P and R.
 
-For cryptography, one chooses an appropriate point P on the elliptic curve generates a high enough random natural number x. This number is called the private key. With the chosen point P and the private key one calculates the point R on the curve, which is then defined as the public key
+For cryptography, one chooses an appropriate point P on the elliptic curve generates a high enough random natural number x. This number is called the private key. With the chosen point P and the private key one calculates the point R on the curve, which is then defined as the public key.  
 
-$$signature= \operatorname { sign } ( M , p r i v )$$
-$$Verify= \text {Ver} ( \text { Signature, } M , p u b )$$
+$$signature= \operatorname { sign } ( M , p r i v )$$  
 
- The advantage of ECC over RSA is that it needs smaller key sizes than transactions
- <p align="center">
- <img src="https://m.eet.com/media/1076009/0206LambertTbl01.gif">
+$$Verify= \text {Ver} ( \text { Signature, } M , p u b )$$  
 
- </p>
+The advantage of ECC over RSA is that it needs smaller key sizes than transactions.  
 
- <center>
- ECC vs RSA Key Sizes
- </center>
+<p align="center">
+<img src="https://m.eet.com/media/1076009/0206LambertTbl01.gif">
+
+</p>
+
+<center>
+ECC vs RSA Key Sizes
+</center>
 
 
-#Hashing Functions and Mining
+# Hashing Functions and Mining  
 
 We use a cryptographic hash function called SHA-256. SHA-256 is applied to a combination of the block's data (bitcoin transactions) and a number called nonce. By changing the block data or the nonce, we get completely different hashes. For a block to be considered valid or "mined", the hash value of the block and the nonce needs to meet a certain condition. For example, the four leading digits of the hash needs to be equal to "0000". We can increase the mining complexity by making the condition more complex, for example we can increase the number of 0s that the hash value needs to start with.
 
@@ -83,29 +84,6 @@ Any changes to the data in any block will affect all the hash values of the bloc
 Demo of the App
 </center>
 
-
-
-
-
-
-
-And here's some *italics*
-
-Here's some **bold** text.
-
-What about a [link](https://github.com/dataoptimal)?
-
-Here's a bulleted list:
-* First item
-+ Second item
-- Third item
-
-Here's a numbered list:
-1. First
-2. Second
-3. Third
-
-Python code block:
 ```python
 from fastecdsa import keys, curve,ecdsa
 
