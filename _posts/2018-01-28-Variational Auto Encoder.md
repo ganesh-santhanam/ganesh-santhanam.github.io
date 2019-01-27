@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "Variational Auto Encoder"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -7,30 +7,6 @@ header:
 excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
-
-# H1 Heading
-
-## H2 Heading
-
-### H3 Heading
-
-Here's some basic text.
-
-And here's some *italics*
-
-Here's some **bold** text.
-
-What about a [link](https://github.com/dataoptimal)?
-
-Here's a bulleted list:
-* First item
-+ Second item
-- Third item
-
-Here's a numbered list:
-1. First
-2. Second
-3. Third
 
 
 A variational autoencoder (VAE) provides a probabilistic manner for describing an observation in latent space. Thus, rather than building an encoder which outputs a single value to describe each latent state attribute, we'll formulate our encoder to describe a probability distribution for each latent attribute.

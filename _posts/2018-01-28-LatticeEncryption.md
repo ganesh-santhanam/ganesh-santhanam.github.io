@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "Post Quantum encryption based on Lattices"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -7,30 +7,6 @@ header:
 excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
-
-# H1 Heading
-
-## H2 Heading
-
-### H3 Heading
-
-Here's some basic text.
-
-And here's some *italics*
-
-Here's some **bold** text.
-
-What about a [link](https://github.com/dataoptimal)?
-
-Here's a bulleted list:
-* First item
-+ Second item
-- Third item
-
-Here's a numbered list:
-1. First
-2. Second
-3. Third
 
 
 In the last four decades, many widely used public key cryptographic schemes have been designed based on the difficulty of factoring and other similar problems. That includes RSA, the Diffie-Hellman Key Exchange and  Elliptic curve crypto. However is a quantum computer gets built we can use Shor's algorithm to solve factoring with exponential speedup and search with Grover's algorithm with polynomial speedup which would mean that these encryption schemes can be easily broken.

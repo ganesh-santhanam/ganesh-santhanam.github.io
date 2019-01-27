@@ -8,31 +8,6 @@ excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
 
-# H1 Heading
-
-## H2 Heading
-
-### H3 Heading
-
-Here's some basic text.
-
-And here's some *italics*
-
-Here's some **bold** text.
-
-What about a [link](https://github.com/dataoptimal)?
-
-Here's a bulleted list:
-* First item
-+ Second item
-- Third item
-
-Here's a numbered list:
-1. First
-2. Second
-3. Third
-
-
 Linear algebra provides a way of compactly representing and operating on sets of linear
 equations. For example, consider the following system of equations:
 
@@ -168,7 +143,7 @@ $$ | A | = \sum _ { i = 1 } ^ { n } ( - 1 ) ^ { i + j } a _ { i j } \left| A _ {
 Example for  a 2x2 matrix:
 
 $$| A | = \left| \begin{array} { l l } { a } & { b } \\ { c } & { d } \end{array} \right| = a d - b c$$  
-  
+
 Properties of determinants are as follows:
 -   $| A | = \left| A ^ { T } \right|$
 -   $| A B | = | A | | B |$

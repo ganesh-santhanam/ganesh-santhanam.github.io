@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "Active Learning"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -8,29 +8,6 @@ excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
 
-# H1 Heading
-
-## H2 Heading
-
-### H3 Heading
-
-Here's some basic text.
-
-And here's some *italics*
-
-Here's some **bold** text.
-
-What about a [link](https://github.com/dataoptimal)?
-
-Here's a bulleted list:
-* First item
-+ Second item
-- Third item
-
-Here's a numbered list:
-1. First
-2. Second
-3. Third
 
 Active learning is a special case of machine learning in which a learning algorithm is able to interactively query the user (or some other information source called the oracle  to obtain the desired outputs at new data points. There are situations in which unlabeled data is abundant but manually labeling is expensive. In such a scenario, learning algorithms can actively query the user/teacher for labels. This type of iterative supervised learning is called active learning. Since the learner chooses the examples, the number of examples to learn a concept can often be much lower than the number required in normal supervised learning.
 

@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "Blockchain with Elliptic curve crypto"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -7,12 +7,6 @@ header:
 excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
-
-# H1 Heading
-
-## H2 Heading
-
-### H3 Heading
 
  # Blockchain With Elliptic Curve Digital Signature (ECDSA)
 
@@ -359,32 +353,3 @@ def configure():
             response = {'nodes': nodes}
             return jsonify(response), 200        
 ```
-
-R code block:
-```r
-library(tidyverse)
-df <- read_csv("some_file.csv")
-head(df)
-```
-
-Here's some inline code `x+y`.
-
-Here's some math:
-
-$$z=x+y$$
-
-Latex Math
-
-$$ \theta H = - \sum _ { x _ { = 0 } } ^ { 1 } \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \log \left[ \theta ^ { x } ( 1 - \theta ) ^ { 1 - x } \right] $$
-
-
-
-
-<p align="center">
-<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif">
-
-</p>
-
-<center>
-*Fig. 2: The minimum dominating set of a graph*
-</center>

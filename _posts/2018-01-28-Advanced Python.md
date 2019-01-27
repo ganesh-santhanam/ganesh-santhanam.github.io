@@ -1,5 +1,5 @@
 ---
-title: "Reference"
+title: "Advanced Python"
 date: 2018-01-28
 tags: [machine learning, data science, neural network]
 header:
@@ -8,15 +8,7 @@ excerpt: "Machine Learning, Perceptron, Data Science"
 mathjax: "true"
 ---
 
-# H1 Heading
 
-## H2 Heading
-
-### H3 Heading
-
-```python
-
-```
 #Iterators
 
 Iterators are objects that allow iteration over a collection. Such collections need not be of objects that already exist in memory, and because of this, they need not necessarily be finite. An iterable is defined as an object that has an __iter__ method, which is required to return an iterator object. An iterator in turn is an object that has the two methods __iter__ and  __next__  with the former returning an iterator object and the latter returning the next element of the iteration.
