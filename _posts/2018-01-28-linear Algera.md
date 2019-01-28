@@ -1,6 +1,5 @@
 ---
 title: "Linear Algebra"
-date: 2018-01-28
 mathjax: "true"
 ---
 

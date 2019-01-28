@@ -1,6 +1,5 @@
 ---
 title: "Blockchain with Elliptic curve crypto"
-date: 2018-01-28
 mathjax: "true"
 ---
 

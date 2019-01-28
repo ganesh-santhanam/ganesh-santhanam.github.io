@@ -1,6 +1,5 @@
 ---
 title: "Post Quantum encryption based on Lattices"
-date: 2018-01-28
 mathjax: "true"
 ---
 

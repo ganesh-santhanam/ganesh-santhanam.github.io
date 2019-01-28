@@ -1,6 +1,5 @@
 ---
 title: "Python Quick Reference"
-date: 2018-01-28
 mathjax: "true"
 ---
 

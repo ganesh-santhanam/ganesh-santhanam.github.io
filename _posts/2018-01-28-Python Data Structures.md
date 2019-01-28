@@ -1,7 +1,5 @@
 ---
 title: "Python Data Structures"
-date: 2018-01-28
-tags: [machine learning, data science, neural network]
 mathjax: "true"
 ---
 

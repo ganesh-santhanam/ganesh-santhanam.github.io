@@ -1,6 +1,5 @@
 ---
 title: "Dropout as bayesian approxiamtion"
-date: 2018-01-28
 mathjax: "true"
 ---
 

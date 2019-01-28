@@ -1,6 +1,5 @@
 ---
 title: "Naive Bayes Classifier"
-date: 2018-01-28
 mathjax: "true"
 ---
 

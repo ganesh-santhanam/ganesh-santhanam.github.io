@@ -1,6 +1,5 @@
 ---
 title: "RSA Encryption implementation in Python"
-date: 2018-01-28
 mathjax: "true"
 ---
 
