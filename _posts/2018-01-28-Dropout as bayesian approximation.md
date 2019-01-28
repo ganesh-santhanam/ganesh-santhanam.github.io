@@ -3,16 +3,22 @@ title: "Dropout as bayesian approxiamtion"
 mathjax: "true"
 ---
 
+While current deep networks are widely used in multiple applications, they do have some issues:
+* Neural networks compute point estimates
+* Neural networks make overly confident decisions about the correct class, prediction or action
+* Neural networks are prone to overfitting
 
-Deep Learning has some isses : They are uninterpretable black box. No idea why they make the decisions they do. This may be acceptable in some use cases(Cats vs dogs) but not in otheres (Distingushing medical images)
+While Bayesian Neural networks do address these issues they dont scale to the large scale data available today. One approach that solves this is is using stochastic Dropout as bayesian approximation.
 
-Can be fooled by adversarial samples
+# Dropout in Deep Learning
 
-Relies on huge amounts of labelled data
+Dropout is a well-established procedure to regularize a neural network and limit overfitting. It is first introduced by Srivastava et al. [1] using a branch/prediction averaging analogy. The “dropout as a Bayesian Approximation” proposes a simple approach to quantify the neural network uncertainty. It employs dropout during both training and testing and this is called Monte Carlo Dropout(MC Dropout). MC Dropout offers a new and handy way to estimate uncertainty with minimal changes in most existing networks. In the simplest case, you just need to keep your dropout on at test time, then pass the data multiple times and store all the predictions. The downside is, this could be computationally expensive.
 
-
-Gaussian Process
-Neural network with single layer which is infinitely wide with gaussian priors to all the weights is a gaussian process
+The Steps are:
+Given a point x:
+1. Drop units at test time
+2. Repeat n times
+3. Look at mean and sample variance
 
 
 
@@ -78,14 +84,31 @@ Network trained with dropout is a bayesian Neural network
 MC dropout requires application of dropout at every weight layer at test time
 $$q \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } \right) = \int p \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } , \mathbf { w } \right) q ( \mathbf { w } | \mathbf { X } , \mathbf { Y } )$$
 
-MC dropout averages over T forward passes  thru the network at test time. To estimate test mean and uncertainity by simply collecting the stochastic dropout forward passes.
+MC dropout averages over T forward passes  thru the network at test time. To estimate test mean and uncertainty by simply collecting the stochastic dropout forward passes.
+
+<p align="center">
+<img src="https://imgur.com/rKFQo3e.jpg">
+
+</p>
+
+<center>
+Results on common datasets ( Source Andrew Rowan)
+</center>
 
 
+<p align="center">
+<img src="https://imgur.com/RvNacsP.jpg">
+
+</p>
+
+<center>
+Results on Synthetic dataset in Python
+</center>
 # References
 
 1.Srivastava et al  Dropout:A simple way to prevent neural networks from overfitting,2014  
-2.Abadi et al ,TensorFlow: Large-scale machine learning on heterogeneous systems, 2015
-3.Gal and Ghahramani: Dropout as Bayesian approximation: Representing model uncertainty in deep learning 2015
+2.Abadi et al ,TensorFlow: Large-scale machine learning on heterogeneous systems, 2015  
+3.Gal and Ghahramani: Dropout as Bayesian approximation: Representing model uncertainty in deep learning 2015  
 4.Radford Neal: Monte Carlo Implementation of Gaussian Process Models for Bayesian Regression and Classification 1997
 
 
