@@ -11,10 +11,89 @@ Can be fooled by adversarial samples
 Relies on huge amounts of labelled data
 
 
+Gaussian Process
+Neural network with single layer which is infinitely wide with gaussian priors to all the weights is a gaussian process
 
 
 
-Python code block:
+
+
+$$
+\text { Posterior: } p ( \mathbf { w } | \mathbf { X } , y ) = \frac { p ( y | \mathbf { X } , \mathbf { w } ) p ( \mathbf { w } ) } { p ( y | \mathbf { X } ) }
+$$
+
+We compute  distribution y* for new input x*
+$$
+p \left( y ^ { * } | \mathbf { x } ^ { * } , \mathbf { X } , y \right) = \int p \left( y ^ { * } | \mathbf { x } ^ { * } , \mathbf { w } \right) p ( \mathbf { w } | \mathbf { X } , y ) d \mathbf { w }
+$$
+
+As exact inference is computationally intractable we try to  approximate the Posterior using variational inference by optimizing ELBO. However this can cause issues with high variance of the gradient estimates.
+
+
+<p align="center">
+<img src="https://imgur.com/JUKu4xj.jpg">
+
+</p>
+
+<center>
+Dropout
+</center>
+
+
+
+
+$$
+\begin{aligned} z _ { i } ^ { ( l + 1 ) } & = \mathbf { w } _ { i } ^ { ( l + 1 ) } \mathbf { y } ^ { l } + b _ { i } ^ { ( l + 1 ) } \\ y _ { i } ^ { ( l + 1 ) } & = f \left( z _ { i } ^ { ( l + 1 ) } \right) \end{aligned}
+$$
+where f is any activation function.
+
+Dropout multiplies hidden activations by Bernoulli distributed random variables which take value 1 with probability p and 0 otherwise
+With Dropout feed forward run becomes
+$$
+\begin{array} { r l } { r _ { j } ^ { ( l ) } } & { \sim \text { Bernoulli } ( p ) } \\ { \widetilde { \mathbf { y } } ^ { ( l ) } } & { = \mathbf { r } ^ { ( l ) } * \mathbf { y } ^ { ( l ) } } \\ { z _ { i } ^ { ( l + 1 ) } } & { = \mathbf { w } _ { i } ^ { ( l + 1 ) } \widetilde { \mathbf { y } } ^ { l } + b _ { i } ^ { ( l + 1 ) } } \\ { y _ { i } ^ { ( l + 1 ) } } & { = f \left( z _ { i } ^ { ( l + 1 ) } \right) } \end{array} $$
+
+
+<p align="center">
+<img src="https://imgur.com/cs2vfO8.jpg">
+
+</p>
+
+<center>
+Dropout vs standard
+</center>
+
+With Dropout the objective function
+$$
+\mathcal { L } _ { \text { dropout } } = \underbrace { \frac { 1 } { N } \sum _ { i = 1 } ^ { N } E \left( \mathbf { y } _ { i } , \hat { \mathbf { y } } _ { i } \right) } _ { \text { Loss function } } + \underbrace { \lambda \sum _ { i = 1 } ^ { L } \left( \left\| \mathbf { W } _ { i } \right\| ^ { 2 } + \left\| \mathbf { b } _ { i } \right\| ^ { 2 } \right) } _ { L _ { 2 } \text { regularization with weight decay\lambda } }
+$$
+
+Gal and Ghahramani showed that we can reparametrize  the approximate variational distribution to be non-gaussian(Bernoulli)
+
+They showed that Variational inference and dropout objective functions are same given the choice of approximating reparametrized posterior and normal priors over network weights.
+
+optimizing any neural network with dropout is equivalent to a form of approximate bayesian inference
+
+Network trained with dropout is a bayesian Neural network
+
+MC dropout requires application of dropout at every weight layer at test time
+$$q \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } \right) = \int p \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } , \mathbf { w } \right) q ( \mathbf { w } | \mathbf { X } , \mathbf { Y } )$$
+
+MC dropout averages over T forward passes  thru the network at test time. To estimate test mean and uncertainity by simply collecting the stochastic dropout forward passes.
+
+
+# References
+
+1.Srivastava et al  Dropout:A simple way to prevent neural networks from overfitting,2014  
+2.Abadi et al ,TensorFlow: Large-scale machine learning on heterogeneous systems, 2015
+3.Gal and Ghahramani: Dropout as Bayesian approximation: Representing model uncertainty in deep learning 2015
+4.Radford Neal: Monte Carlo Implementation of Gaussian Process Models for Bayesian Regression and Classification 1997
+
+
+
+
+
+
+
 ```python
 import numpy as np
 import tensorflow as tf
@@ -103,80 +182,3 @@ if True:
     plt.grid()
     plt.show()
 ```
-
-Gaussian Process
-Neural network with single layer which is infinitely wide with gaussian priors to all the weights is a gaussian process
-
-
-
-
-
-$$
-\text { Posterior: } p ( \mathbf { w } | \mathbf { X } , y ) = \frac { p ( y | \mathbf { X } , \mathbf { w } ) p ( \mathbf { w } ) } { p ( y | \mathbf { X } ) }
-$$
-
-We compute  distribution y* for new input x*
-$$
-p \left( y ^ { * } | \mathbf { x } ^ { * } , \mathbf { X } , y \right) = \int p \left( y ^ { * } | \mathbf { x } ^ { * } , \mathbf { w } \right) p ( \mathbf { w } | \mathbf { X } , y ) d \mathbf { w }
-$$
-
-As exact inference is computationally intractable we try to  approximate the Posterior using variational inference by optimizing ELBO. However this can cause issues with high variance of the gradient estimates.
-
-
-<p align="center">
-<img src="https://imgur.com/JUKu4xj.jpg">
-
-</p>
-
-<center>
-Dropout
-</center>
-
-
-
-
-$$
-\begin{aligned} z _ { i } ^ { ( l + 1 ) } & = \mathbf { w } _ { i } ^ { ( l + 1 ) } \mathbf { y } ^ { l } + b _ { i } ^ { ( l + 1 ) } \\ y _ { i } ^ { ( l + 1 ) } & = f \left( z _ { i } ^ { ( l + 1 ) } \right) \end{aligned}
-$$
-where f is any activation function.
-
-Dropout multiplies hidden activations by Bernoulli distributed random variables which take value 1 with probability p and 0 otherwise
-With Dropout feed forward run becomes
-$$
-\begin{array} { r l } { r _ { j } ^ { ( l ) } } & { \sim \text { Bernoulli } ( p ) } \\ { \widetilde { \mathbf { y } } ^ { ( l ) } } & { = \mathbf { r } ^ { ( l ) } * \mathbf { y } ^ { ( l ) } } \\ { z _ { i } ^ { ( l + 1 ) } } & { = \mathbf { w } _ { i } ^ { ( l + 1 ) } \widetilde { \mathbf { y } } ^ { l } + b _ { i } ^ { ( l + 1 ) } } \\ { y _ { i } ^ { ( l + 1 ) } } & { = f \left( z _ { i } ^ { ( l + 1 ) } \right) } \end{array} $$
-
-
-<p align="center">
-<img src="https://imgur.com/cs2vfO8.jpg">
-
-</p>
-
-<center>
-Dropout vs standard
-</center>
-
-With Dropout the objective function
-$$
-\mathcal { L } _ { \text { dropout } } = \underbrace { \frac { 1 } { N } \sum _ { i = 1 } ^ { N } E \left( \mathbf { y } _ { i } , \hat { \mathbf { y } } _ { i } \right) } _ { \text { Loss function } } + \underbrace { \lambda \sum _ { i = 1 } ^ { L } \left( \left\| \mathbf { W } _ { i } \right\| ^ { 2 } + \left\| \mathbf { b } _ { i } \right\| ^ { 2 } \right) } _ { L _ { 2 } \text { regularization with weight decay\lambda } }
-$$
-
-Gal and Ghahramani showed that we can reparametrize  the approximate variational distribution to be non-gaussian(Bernoulli)
-
-They showed that Variational inference and dropout objective functions are same given the choice of approximating reparametrized posterior and normal priors over network weights.
-
-optimizing any neural network with dropout is equivalent to a form of approximate bayesian inference
-
-Network trained with dropout is a bayesian Neural network
-
-MC dropout requires application of dropout at every weight layer at test time
-$$q \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } \right) = \int p \left( \mathbf { y } ^ { * } | \mathbf { x } ^ { * } , \mathbf { w } \right) q ( \mathbf { w } | \mathbf { X } , \mathbf { Y } )$$
-
-MC dropout averages over T forward passes  thru the network at test time. To estimate test mean and uncertainity by simply collecting the stochastic dropout forward passes.
-
-
-# References
-
-1.Srivastava et al  Dropout:A simple way to prevent neural networks from overfitting,2014  
-2.Abadi et al ,TensorFlow: Large-scale machine learning on heterogeneous systems, 2015
-3.Gal and Ghahramani: Dropout as Bayesian approximation: Representing model uncertainty in deep learning 2015
-4.Radford Neal: Monte Carlo Implementation of Gaussian Process Models for Bayesian Regression and Classification 1997

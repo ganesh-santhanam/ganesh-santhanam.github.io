@@ -75,7 +75,7 @@ Sample of posterior for 9
 
 
 
-Python code block:
+
 ```python
 from __future__ import print_function, division
 from builtins import range, input
