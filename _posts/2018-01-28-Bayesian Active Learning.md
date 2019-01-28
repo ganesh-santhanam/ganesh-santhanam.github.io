@@ -3,6 +3,46 @@ title: "Bayesian Active Learning"
 mathjax: "true"
 ---
 
+# Active Learning
+
+A  big  challenge  in  many  machine  learning  applications is obtaining labelled data.  This can be a long, laborious and costly process. In active learning, a model is trained on a small amount of data (the initial training set), and an acquisition function(often based on the model’s uncertainty) decides which data points to ask an external oracle (Typically a Human expert ) for a label.  The acquisition function selects one or more points from a pool of un-labelled data points, with the pool points lying outside of the training set. The oracle labels the selected data points, these are added to the training set and a new model is trained on the updated training set. This process is then repeated, with the training set increasing in size over time.  The advantage of such systems is that they often result in dramatic reductions in the amount of labelling required to train an ML system.
+
+A major challenge in active learning is its lack of scalability to high-dimensional data. As a result most approaches to active learning have focused on low dimensional problems.
+
+# Bayesian approaches to deep learning
+
+Recent advances in deep learning depend on large amounts of data. Second, many AL acquisition functions rely on model uncertainty. But in deep learning we rarely represent such model uncertainty. To resolve this we use approximate Bayesian inference and use the uncertainty in the acquisition function to do active learning on MNIST dataset.
+
+Bayesian CNNs are CNNs with prior probability distributions placed over a setof model parameters  
+$$\omega = \left\{ W _ { 1 } , \ldots , W _ { L } \right\}$$
+
+$$p ( y = c | \mathbf { x } , \boldsymbol { \omega } ) = \operatorname { softmax } \left( \mathbf { f } ^ { \omega } ( \mathbf { x } ) \right)$$
+
+
+To perform approximate inference in the Bayesian CNN model we make use of stochastic regularization techniques such as dropout which was shown to be a Bayesian approximation
+by Gal Et al(2016). Inference is done by training a model with dropout before every weight layer, and by performing dropout attest time as well to sample from the approximate posterior(stochastic forward passes, referred to as MC dropout).
+
+More formally, this approach is equivalent to performingapproximate variational inference where we find a distribution $q _ { 0 } ^ { * } ( \omega )$ in  a  tractable  family  which  minimizes  the Kullback-Leibler (KL) divergence to the true model posterior.
+
+$$p ( y = c | \mathbf { x } , \mathcal { D } _ { \text { train } } ) = \int p ( y = c | \mathbf { x } , \boldsymbol { \omega } ) p ( \boldsymbol { \omega } | \mathcal { D } _ { \text { train } } ) \mathrm { d } \boldsymbol { \omega }$$  
+
+$$\approx \int p ( y = c | \mathbf { x } , \omega ) q _ { \theta } ^ { * } ( \omega ) \mathrm { d } \omega$$  
+
+$$\approx \frac { 1 } { T } \sum _ { t = 1 } ^ { T } p ( y = c | \mathbf { x } , \widehat { \omega } _ { t } )$$  
+
+with $\widehat { \omega } _ { t } \sim q _ { 0 } ^ { * } ( \omega )$ where $q _ { 0 } ( \omega )$ is the dropout distribution.
+
+#  Acquisition Functions  
+
+Acquisition function is a function of x that the AL system uses to decide where to query next:
+
+$$x ^ { * } = \operatorname { argmax } _ { x \in \mathcal { D } _ { \text { pool } } } a ( x , \mathcal { M } )$$
+
+Here we choose pool points that maximize the predictive Shannon Entropy  
+$$\begin{array} { l } { \mathbb { H } [ y | \mathbf { x } , \mathcal { D } _ { \text { train } } ] : = } \\ { \quad - \sum p ( y = c | \mathbf { x } , \mathcal { D } _ { \text { train } } ) \log p ( y = c | \mathbf { x } , \mathcal { D } _ { \text { train } } ) } \end{array}$$
+
+In MNIST we are able to get 95% accuracy after querying only 450 samples.
+
 
 <p align="center">
 <img src="https://imgur.com/Elz8Sdg.jpg">
@@ -14,7 +54,7 @@ Active learning with Dropout
 </center>
 
 
-Python code block:
+
 ```python
 from __future__ import print_function
 from keras.datasets import mnist
@@ -328,31 +368,6 @@ for e in range(Experiments):
 		Pool_Valid_Acc = np.append(Pool_Valid_Acc, Valid_Acc, axis=1)
 		Pool_Train_Acc = np.append(Pool_Train_Acc, Train_Acc, axis=1)
 
-		print('Evaluate Model Test Accuracy with pooled points')
 
-		score, acc = model.evaluate(X_test, Y_test, show_accuracy=True, verbose=0)
-		print('Test score:', score)
-		print('Test accuracy:', acc)
-		all_accuracy = np.append(all_accuracy, acc)
-
-		print('Use this trained model with pooled points for Dropout again')
-
-	print('Storing Accuracy Values over experiments')
-	Experiments_All_Accuracy = Experiments_All_Accuracy + all_accuracy
-
-
-	print('Saving Results Per Experiment')
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+'Dropout_Max_Entropy_Q10_N1000_Train_Loss_'+ 'Experiment_' + str(e) + '.npy', Pool_Train_Loss)
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+ 'Dropout_Max_Entropy_Q10_N1000_Valid_Loss_'+ 'Experiment_' + str(e) + '.npy', Pool_Valid_Loss)
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+'Dropout_Max_Entropy_Q10_N1000_Train_Acc_'+ 'Experiment_' + str(e) + '.npy', Pool_Train_Acc)
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+ 'Dropout_Max_Entropy_Q10_N1000_Valid_Acc_'+ 'Experiment_' + str(e) + '.npy', Pool_Valid_Acc)
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+'Dropout_Max_Entropy_Q10_N1000_Pooled_Image_Index_'+ 'Experiment_' + str(e) + '.npy', x_pool_All)
-	np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+ 'Dropout_Max_Entropy_Q10_N1000_Accuracy_Results_'+ 'Experiment_' + str(e) + '.npy', all_accuracy)
-
-print('Saving Average Accuracy Over Experiments')
-
-Average_Accuracy = np.divide(Experiments_All_Accuracy, Experiments)
-
-np.save('/home/ri258/Documents/Project/MPhil_Thesis_Cluster_Experiments/ConvNets/Cluster_Experiments/Paper_Submission/Results/'+'Dropout_Max_Entropy_Q10_N1000_Average_Accuracy'+'.npy', Average_Accuracy)
 
 ```
