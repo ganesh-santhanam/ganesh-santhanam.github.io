@@ -1,8 +1,71 @@
 ---
-title: "Memory Networkl for Question answering"
-date: 2018-01-28
+title: "Memory Networks for Question answering"
 mathjax: "true"
 ---
+
+# Dynamic Memory Networks
+
+Dynamic Memory Networks (DMNs) have shown recent success in question answering. They have achieved state-of-the-art results of the Facebook bAbI dataset. Here we implement our own DMN in tensorflow and verify its performance quantitatively and qualitatively. We can show that DMNs can successfully complete multiplebabi tasks with the same model including one step reasoning, two step reasoning.
+
+Question Answering (QA) is one of the oldest tasks in NLP. Most problems in NLP can be formulated as a question answering task. The current state-of-the-art system is Dynamic Memory Networks presented by Xiong et al. This system contains 4 modules: input, episodic memory, question, and answer.  Each module consists of an RNN optimized for the corresponding sub-task.
+
+The Facebook bAbI-10k dataset has been used as a benchmark in many question answering papers.It consists of 20 tasks.   Each task has a different type of question such as single supporting factquestions, two supporting fact questions, yes no questions, counting questions, etc.We used the English version of the dataset with 10,000 training examples and 1000 test examples.All examples consist of an input-question-answer tuple.  The input is a variable length passage oftext.  The type of question and answer depends on the task.
+
+Two supporting fact example
+```text
+1 Mary got the milk there.
+2 John moved to the bedroom
+3 Sandra went back to the kitchen.
+4 Mary travelled to the hallway.
+5 Where is the milk?
+Answer : Hallway
+```
+
+# Input Module
+
+The input module takes in the word vectors for the input and feeds then through a GRU and outputs the hidden states at the end of each sentence for the episodic memory module to reason over.  
+
+$$h _ { t } = G R U \left( L \left[ w _ { t } \right] , h _ { t - 1 } \right)$$
+
+# Question Module  
+
+The question module also runs a GRU over the word vectors, however it just outputs the final stateof the GRU to encode the question.
+
+$$h _ { t } = G R U \left( L \left[ w _ { t } \right] , h _ { t - 1 } \right)$$
+
+# Episodic Memory Module
+
+The episodic memory module reasons over the sentence states from the input module as well as the question state from the question module and ultimately produces a final memory state that is sent to the answer module to generate an answer. Each episode reasons over the sentences and produces a final state for that pass over the data.
+
+$$z _ { t } ^ { i } = \left[ c _ { t } , m , q , c _ { t } \circ q , c _ { t } \circ m , \left| c _ { t } - q \right| , \left| c _ { t } - m \right| \right]$$  
+
+$$Z _ { t } ^ { i } = W ^ { ( 2 ) } \tanh \left( W ^ { 1 ) } z _ { t } ^ { i } + b ^ { ( 1 ) } \right) + b ^ { ( 2 ) }$$
+
+$$g _ { t } ^ { i } = \frac { \exp \left( Z _ { t } ^ { i } \right) } { \sum _ { k = 1 } ^ { M _ { i } } \exp \left( Z _ { k } ^ { t } \right) }$$
+
+$$h _ { t } ^ { i } = g _ { t } ^ { i } G R U \left( c _ { t } , h _ { t - 1 } ^ { i } \right) + \left( 1 - g _ { t } ^ { i } \right) h _ { t - 1 } ^ { i }$$
+
+
+# Memory Update Mechanism
+
+The memory is then updated using the current episode state and the previous memory state.
+
+$$m ^ { t } = G R U \left( e ^ { t } , m ^ { t - 1 } \right)$$
+
+# Answer Module  
+
+The answer module is simple linear layer with a softmax activation to produce a probability distribution over the answer tokens. This could be extended to an RNN for multiword answers, however we kept it as a simple softmax since the bAbI dataset only has one word answers
+
+<p align="center">
+<img src="https://imgur.com/RJjrBiM.jpg">
+
+</p>
+
+<center>
+Dynamic Memory Network
+</center>
+
+
 
 <p align="center">
 <img src="https://imgur.com/SEtTurX.jpg">
